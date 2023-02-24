@@ -102,15 +102,15 @@ function App(): JSX.Element {
         <Route
         path="/myProfile"
         element={
-          <MyProfile user={user}/>
+          <MyProfile user={user!}/>
         }
         />
-        <Route
+        {/* <Route
         path="/profile/:id"
         element={
           <ViewProfile user={user}/>
         }
-        />
+        /> */}
         <Route
           path="/profiles"
           element={
