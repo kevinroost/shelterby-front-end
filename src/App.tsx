@@ -10,7 +10,10 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Dogs from './pages/Dogs/Dogs'
 import EditProfile from './pages/EditProfile/EditProfile'
-import ViewProfile from './pages/ViewProfile/ViewProfile'
+import EditDog from './pages/EditDog/EditDog'
+import ViewProfile from './pages/MyProfile/MyProfile'
+import ViewDog from './pages/ViewDog/ViewDog'
+import MyProfile from './pages/MyProfile/MyProfile'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -79,13 +82,31 @@ function App(): JSX.Element {
           element={<Login handleAuthEvt={handleAuthEvt} />}
         />
         <Route
-        path="/editFamily"
+        path="/profile/edit"
         element={
           <EditProfile user={user}/>
         }
         />
         <Route
-        path="/family"
+        path="/dog/edit"
+        element={
+          <EditDog />
+        }
+        />
+        <Route
+        path="/dog/:id"
+        element={
+          <ViewDog />
+        }
+        />
+        <Route
+        path="/myProfile"
+        element={
+          <MyProfile user={user}/>
+        }
+        />
+        <Route
+        path="/profile/:id"
         element={
           <ViewProfile user={user}/>
         }

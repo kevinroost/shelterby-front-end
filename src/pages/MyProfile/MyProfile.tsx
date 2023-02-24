@@ -2,11 +2,11 @@ import { User } from "../../types/models"
 import { Link, Navigate } from "react-router-dom"
 
 
-interface ViewProfileProps {
+interface MyProfileProps {
   user: User | null
 }
 
-const ViewProfile = (props: ViewProfileProps): JSX.Element => {
+const MyProfile = (props: MyProfileProps): JSX.Element => {
 
 
   if (!props.user) {
@@ -20,12 +20,12 @@ const ViewProfile = (props: ViewProfileProps): JSX.Element => {
           <br/>
           {props.user.profile.lastName}
           <br/>
-          LISTED DOGS
+          LISTED DOGS LINK TO EDIT DOG
           <br/>
-          FUTURE DOGS
+          FUTURE DOGS LINK TO DOG DEETS
         </h1>
 
-        <Link to='/editFamily'>
+        <Link to='/profile/edit'>
           Edit The {props.user.profile.lastName}s
         </Link>
     </>
@@ -33,4 +33,4 @@ const ViewProfile = (props: ViewProfileProps): JSX.Element => {
 
 }
 
-export default ViewProfile
+export default MyProfile
