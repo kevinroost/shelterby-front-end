@@ -9,6 +9,8 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Dogs from './pages/Dogs/Dogs'
+import EditProfile from './pages/EditProfile/EditProfile'
+import ViewProfile from './pages/ViewProfile/ViewProfile'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -17,6 +19,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 // services
 import * as authService from './services/authService'
 import * as dogService from './services/dogService'
+import * as profileService from './services/dogService'
 
 
 // stylesheets
@@ -31,6 +34,7 @@ function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
   const [dogs, setDogs] = useState<Dog[]>([])
 
+
   const handleLogout = (): void => {
     authService.logout()
     setUser(null)
@@ -42,13 +46,11 @@ function App(): JSX.Element {
   }
 
   useEffect((): void => {
-    console.log('working');
     const fetchDogs = async (): Promise<void> => {
       try {
         const dogData: Dog[] = await dogService.getAllDogs()
         setDogs(dogData)
       } catch (error) {
-        console.log('not working');
         console.log(error)
       }
     }
@@ -75,6 +77,18 @@ function App(): JSX.Element {
         <Route
           path="/login"
           element={<Login handleAuthEvt={handleAuthEvt} />}
+        />
+        <Route
+        path="/editFamily"
+        element={
+          <EditProfile user={user}/>
+        }
+        />
+        <Route
+        path="/family"
+        element={
+          <ViewProfile user={user}/>
+        }
         />
         <Route
           path="/profiles"

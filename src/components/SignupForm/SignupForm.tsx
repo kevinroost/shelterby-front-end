@@ -122,15 +122,17 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
         />
       </div> */}
       <div className={styles.inputContainer}>
-        <button 
-          disabled={isFormInvalid() || isSubmitted} 
-          className={styles.button}
-        >
-          {!isSubmitted ? "Sign Up" : "🚀 Sending..."}
-        </button>
-        <Link to="/">
-          <button>Cancel</button>
+        <Link to='/editFamily'>
+          <button 
+            disabled={isFormInvalid() || isSubmitted} 
+            className={styles.button}
+          >
+            {!isSubmitted ? "Sign Up" : "🚀 Sending..."}
+          </button>
         </Link>
+
+        <button>Cancel</button>
+
       </div>
     </form>
   )

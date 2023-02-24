@@ -14,8 +14,12 @@ export interface Dog {
 
 export interface Profile {
   name: string;
-  photo?: string;
+  lastName?: string;
   id: number;
+  userId: number;
+  children?: number;
+  backyard?: string;
+  about?: string
   createdAt: string;
   updatedAt: string;
 }
@@ -23,7 +27,7 @@ export interface Profile {
 export interface User {
   name: string;
   email: string;
-  profile: { id: number };
+  profile: Profile;
   id: number;
   createdAt: string;
   updatedAt: string;
