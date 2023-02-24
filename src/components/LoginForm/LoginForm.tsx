@@ -55,7 +55,7 @@ const LoginForm = (props: AuthFormProps): JSX.Element => {
         <label htmlFor="email" className={styles.label}>Email</label>
         <input
           type="text"
-          id="email"
+          className="email"
           value={formData.email}
           name="email"
           onChange={handleChange}
@@ -65,7 +65,7 @@ const LoginForm = (props: AuthFormProps): JSX.Element => {
         <label htmlFor="password" className={styles.label}>Password</label>
         <input
           type="password"
-          id="password"
+          className="password"
           value={formData.password}
           name="password"
           onChange={handleChange}

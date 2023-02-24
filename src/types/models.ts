@@ -1,6 +1,14 @@
 /* ---------===== custom props ====--------- */
 
-
+export interface Dog {
+  name: string,
+  id: number,
+  age: number,
+  breed: string,
+  about?: string,
+  photo?: string,
+  ownerId: number
+}
 
 /* ---------===== auth models =====--------- */
 

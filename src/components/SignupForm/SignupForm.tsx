@@ -68,7 +68,7 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
         <label htmlFor="name" className={styles.label}>Name</label>
         <input
           type="text"
-          id="name"
+          className="name"
           value={name}
           name="name"
           onChange={handleChange}
@@ -80,7 +80,7 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
         </label>
         <input
           type="text"
-          id="email"
+          className="email"
           value={email}
           name="email"
           onChange={handleChange}
@@ -92,7 +92,7 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
         </label>
         <input
           type="password"
-          id="password"
+          className="password"
           value={password}
           name="password"
           onChange={handleChange}
@@ -104,13 +104,13 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
         </label>
         <input
           type="password"
-          id="confirm"
+          className="confirm"
           value={passwordConf}
           name="passwordConf"
           onChange={handleChange}
         />
       </div>
-      <div className={styles.inputContainer}>
+      {/* <div className={styles.inputContainer}>
         <label htmlFor="photo-upload" className={styles.label}>
           Upload Photo
         </label>
@@ -120,7 +120,7 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
           name="photo"
           onChange={handleChangePhoto}
         />
-      </div>
+      </div> */}
       <div className={styles.inputContainer}>
         <button 
           disabled={isFormInvalid() || isSubmitted} 
