@@ -3,6 +3,8 @@ import { login } from "../../services/authService";
 
 import * as dogService from '../../services/dogService'
 
+import DogCard from "../../components/DogCard/DogCard";
+
 //types
 import { Dog } from '../../types/models'
 
@@ -33,9 +35,10 @@ const Dogs = ({dogs}: DogsProps): JSX.Element => {
     <>
       <h1>We Need Homes!</h1>
       {dogs.map((dog: Dog) => 
-        <p key={dog.id}>
-          {dog.name}
-        </p>
+        <DogCard
+          key={dog.id}
+          dog={dog}
+        />
       )}
     </>
   )

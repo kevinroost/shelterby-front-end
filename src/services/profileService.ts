@@ -48,4 +48,4 @@ async function addPhoto(
   }
 }
 
-export { getAllProfiles, addPhoto, getProfile }
+export { getAllProfiles, addPhoto, getProfile, }

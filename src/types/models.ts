@@ -20,6 +20,7 @@ export interface Profile {
   children?: number;
   backyard?: string;
   about?: string
+  futureDogs?: []
   createdAt: string;
   updatedAt: string;
 }

@@ -22,20 +22,21 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 // services
 import * as authService from './services/authService'
 import * as dogService from './services/dogService'
-import * as profileService from './services/dogService'
+import * as profileService from './services/profileService'
 
 
 // stylesheets
 import './App.css'
 
 // types
-import { User, Dog } from './types/models'
+import { User, Dog, Profile } from './types/models'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
   
   const [user, setUser] = useState<User | null>(authService.getUser())
   const [dogs, setDogs] = useState<Dog[]>([])
+  const [profile, setProfile] = useState<Profile>()
 
 
   const handleLogout = (): void => {
@@ -47,6 +48,22 @@ function App(): JSX.Element {
   const handleAuthEvt = (): void => {
     setUser(authService.getUser())
   }
+
+  if (user){
+    useEffect((): void  => {
+      const fetchProfile = async (): Promise<void> => {
+        try {
+          const profileData: Profile = await profileService.getProfile(user.profile.id)
+          setProfile(profileData)
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      if (user) fetchProfile()
+      console.log(profile)
+    }, [])
+  }
+
 
   useEffect((): void => {
     const fetchDogs = async (): Promise<void> => {
@@ -96,7 +113,7 @@ function App(): JSX.Element {
         <Route
         path="/dog/:id"
         element={
-          <ViewDog />
+          <ViewDog profile={profile}/>
         }
         />
         <Route
@@ -108,7 +125,7 @@ function App(): JSX.Element {
         {/* <Route
         path="/profile/:id"
         element={
-          <ViewProfile user={user}/>
+          <ViewProfile />
         }
         /> */}
         <Route

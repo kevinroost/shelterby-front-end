@@ -26,15 +26,14 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
   if (!props.user) {
     return <Navigate to='/' replace />
   }
-  console.log(props.user.profile)
-  console.log(profile)
+
 
   return (
     <>
         <h1>
           Profile info goes here
           <br/>
-          {props.user.profile.lastName}
+          {profile?.lastName}
           <br/>
           LISTED DOGS LINK TO EDIT DOG
           <br/>
