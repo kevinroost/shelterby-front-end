@@ -2,7 +2,8 @@
 import * as tokenService from './tokenService'
 
 // types
-import { Profile } from '../types/models'
+import { Profile, Dog } from '../types/models'
+import { addToFutureDogsFormData } from '../types/forms'
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/profiles`
 
@@ -30,6 +31,24 @@ async function getProfile(profileId: number): Promise<Profile> {
   }
 }
 
+async function createAssociation(formData: addToFutureDogsFormData): Promise<Dog> {
+  try {
+    const res = await fetch(`${BASE_URL}/${formData.profileId}/futureDogs/${formData.dogId}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    console.log('ASSOCIATION RESPONSE', res);
+    
+    return await res.json() as Dog
+  } catch (error) {
+    throw error
+  }
+}
+
 async function addPhoto(
   photoData: FormData, 
   profileId: number
@@ -48,4 +67,4 @@ async function addPhoto(
   }
 }
 
-export { getAllProfiles, addPhoto, getProfile, }
+export { getAllProfiles, addPhoto, getProfile, createAssociation, }

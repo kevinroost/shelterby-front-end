@@ -1,6 +1,9 @@
 /* ---------==== custom forms ====--------- */
 
-
+export interface addToFutureDogsFormData {
+  profileId: number;
+  dogId: number
+}
 
 /* ---------===== auth forms =====--------- */
 

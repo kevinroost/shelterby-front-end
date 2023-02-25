@@ -1,23 +1,44 @@
 import { Link, useLocation } from "react-router-dom"
+import { useState, useEffect } from "react"
 
 import defaultPic from "/dog-pit-vipers.jpeg"
 
 import { Profile } from "../../types/models"
 import { Dog } from "../../types/models"
+import { addToFutureDogsFormData } from "../../types/forms"
 
 interface ViewDogProps {
-  profile?: Profile
+  profile?: Profile;
+  addToFutureDogs: (formData: addToFutureDogsFormData) => void
 }
 
 const ViewDog = (props: ViewDogProps): JSX.Element => {
-  const { profile } = props
+  const { profile, addToFutureDogs } = props
+  // const [idArray, setIdArray] = useState<number[]>([])
+  
   const location = useLocation()
   const dog = location.state.dog
   const dogPic = dog.photo ? dog.photo : defaultPic
   const idArray = profile?.futureDogs?.map((dog: Dog)=>dog.id)
-  console.log(idArray);
-  
-  console.log('PROFILE',profile)
+
+  // if (profile) {
+  //   useEffect((): void => {
+  //     const dogIdArray: array = profile?.futureDogs?.map((dog: Dog)=>dog.id)
+  //     setIdArray(dogIdArray)
+  //     // const fetchArray = async (): Promise<void> => {
+  //     //   try {
+  //     //     const arrayData: number[] = await 
+  //     //   } catch (error) {
+          
+  //     //   }
+  //     // }
+  //   }, [profile.futureDogs])
+  // }
+
+  const handleClick = (): void => {
+    if (profile) addToFutureDogs({profileId: profile.id, dogId: dog.id })
+  }
+
   return (
     <>
       <img src={dogPic} alt={`${dog.name}'s picture'`}/>
@@ -30,7 +51,7 @@ const ViewDog = (props: ViewDogProps): JSX.Element => {
         </Link>
         {profile && 
             !idArray?.includes(dog.id) &&
-              <p>Add to Future Pups</p> || <p>Added to List!</p>
+              <p onClick={handleClick}>Add to Future Pups</p> || <p>Added to List!</p>
           
         }
     </>

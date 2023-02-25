@@ -30,6 +30,7 @@ import './App.css'
 
 // types
 import { User, Dog, Profile } from './types/models'
+import { addToFutureDogsFormData } from './types/forms'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
@@ -47,6 +48,20 @@ function App(): JSX.Element {
 
   const handleAuthEvt = (): void => {
     setUser(authService.getUser())
+  }
+
+  
+  const addToFutureDogs = async(formData: addToFutureDogsFormData): Promise<void> => {
+    try {
+      const association = await profileService.createAssociation(formData)
+      console.log(association);
+      const profile = await profileService.getProfile(formData.profileId)
+      setProfile(profile)
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
   }
 
   if (user){
@@ -113,7 +128,7 @@ function App(): JSX.Element {
         <Route
         path="/dog/:id"
         element={
-          <ViewDog profile={profile}/>
+          <ViewDog addToFutureDogs={addToFutureDogs} profile={profile}/>
         }
         />
         <Route
