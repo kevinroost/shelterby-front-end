@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import defaultPic from "/dog-pit-vipers.jpeg"
 
+
+
 //types
 import { Dog } from "../../types/models";
 

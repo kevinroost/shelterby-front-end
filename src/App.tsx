@@ -90,6 +90,7 @@ function App(): JSX.Element {
     }
     fetchDogs()
   }, [])
+  console.log(user);
   
 
   return (

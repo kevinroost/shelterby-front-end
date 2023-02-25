@@ -2,6 +2,8 @@ import { User, Profile } from "../../types/models"
 import { Link, Navigate } from "react-router-dom"
 import { useState, useEffect } from "react" 
 
+import FamilyInfo from '../../components/FamilyInfo/FamilyInfo';
+
 import * as profileService from '../../services/profileService'
 
 interface MyProfileProps {
@@ -30,15 +32,14 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
 
   return (
     <>
-        <h1>
-          Profile info goes here
+
+          <FamilyInfo profile={props.user.profile}/>
           <br/>
           {profile?.lastName}
           <br/>
           LISTED DOGS LINK TO EDIT DOG
           <br/>
           FUTURE DOGS LINK TO DOG DEETS
-        </h1>
 
         <Link to='/profile/edit'>
           Edit The {props.user.profile.lastName}s

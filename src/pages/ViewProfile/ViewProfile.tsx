@@ -2,16 +2,17 @@ import { Profile } from "../../types/models"
 import { useState, useEffect } from "react" 
 import { useParams } from "react-router"
 
+import FamilyInfo from '../../components/FamilyInfo/FamilyInfo';
+
 import * as profileService from '../../services/profileService'
 
 type Params = {
-  profileId?: string;
+  profileId: string;
 }
 
 const ViewProfile = (): JSX.Element => {
   const [profile, setProfile] = useState<Profile>()
   const {profileId} = useParams<Params>()
-  console.log('ID', profileId);
   
   if (profileId) {
   useEffect((): void  => {
@@ -27,17 +28,14 @@ const ViewProfile = (): JSX.Element => {
   }, [])
 }
 
+console.log('viewpage', profile);
+console.log('viewpage', profileId);
   return (
     <>
-        <h1>
-          Profile info goes here
-          <br/>
-          {profile?.lastName}
+          {profile && <FamilyInfo profile={profile}/>}
           <br/>
           LISTED DOGS LINK TO EDIT DOG
-          <br/>
-          FUTURE DOGS LINK TO DOG DEETS
-        </h1>
+        
     </>
   )
 
