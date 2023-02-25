@@ -11,7 +11,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Dogs from './pages/Dogs/Dogs'
 import EditProfile from './pages/EditProfile/EditProfile'
 import EditDog from './pages/EditDog/EditDog'
-import ViewProfile from './pages/MyProfile/MyProfile'
+import ViewProfile from './pages/ViewProfile/ViewProfile'
 import ViewDog from './pages/ViewDog/ViewDog'
 import MyProfile from './pages/MyProfile/MyProfile'
 
@@ -53,8 +53,7 @@ function App(): JSX.Element {
   
   const addToFutureDogs = async(formData: addToFutureDogsFormData): Promise<void> => {
     try {
-      const association = await profileService.createAssociation(formData)
-      console.log(association);
+      await profileService.createAssociation(formData)
       const profile = await profileService.getProfile(formData.profileId)
       setProfile(profile)
       
@@ -137,12 +136,12 @@ function App(): JSX.Element {
           <MyProfile user={user!}/>
         }
         />
-        {/* <Route
-        path="/profile/:id"
+        <Route
+        path="/profiles/:profileId"
         element={
           <ViewProfile />
         }
-        /> */}
+        />
         <Route
           path="/profiles"
           element={

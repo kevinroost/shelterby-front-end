@@ -1,32 +1,31 @@
-import { User, Profile } from "../../types/models"
-import { Link, Navigate } from "react-router-dom"
+import { Profile } from "../../types/models"
 import { useState, useEffect } from "react" 
+import { useParams } from "react-router"
 
 import * as profileService from '../../services/profileService'
 
-interface MyProfileProps {
-  user: User
+type Params = {
+  profileId?: string;
 }
 
-const MyProfile = (props: MyProfileProps): JSX.Element => {
+const ViewProfile = (): JSX.Element => {
   const [profile, setProfile] = useState<Profile>()
-
+  const {profileId} = useParams<Params>()
+  console.log('ID', profileId);
+  
+  if (profileId) {
   useEffect((): void  => {
     const fetchProfile = async (): Promise<void> => {
       try {
-        const profileData: Profile = await profileService.getProfile(props.user.profile.id)
+        const profileData: Profile = await profileService.getProfile(parseInt(profileId))
         setProfile(profileData)
       } catch (error) {
         console.log(error)
       }
     }
-    if (props.user) fetchProfile()
+    fetchProfile()
   }, [])
-
-  if (!props.user) {
-    return <Navigate to='/' replace />
-  }
-
+}
 
   return (
     <>
@@ -39,13 +38,9 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
           <br/>
           FUTURE DOGS LINK TO DOG DEETS
         </h1>
-
-        <Link to='/profile/edit'>
-          Edit The {props.user.profile.lastName}s
-        </Link>
     </>
   )
 
 }
 
-export default MyProfile
+export default ViewProfile
