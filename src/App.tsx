@@ -73,6 +73,19 @@ function App(): JSX.Element {
       console.log(error);
     }
   }
+
+  const handleDeleteDog = async(dogId:number): Promise<void> => {
+    try {
+      await dogService.deleteDog(dogId)
+      const updatedDogs = profile?.listedDogs?.filter((dog: Dog) => (dog.id !== dogId))
+      const updatedProfile = {...profile, listedDogs: updatedDogs}
+      setProfile(updatedProfile)
+      const dogData: Dog[] = await dogService.getAllDogs()
+      setDogs(dogData)
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   const addToFutureDogs = async(formData: addToFutureDogsFormData): Promise<void> => {
     try {
@@ -158,7 +171,9 @@ function App(): JSX.Element {
         element={
           <MyProfile 
             // profile={profile!}
+            handleDeleteDog={handleDeleteDog}
             user={user}
+            profile={profile}
           />
         }
         />

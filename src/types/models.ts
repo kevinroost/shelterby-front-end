@@ -7,6 +7,7 @@ export interface Dog {
   breed: string,
   about?: string,
   photo?: string,
+  futureFamilies?: [],
   ownerId: number
 }
 

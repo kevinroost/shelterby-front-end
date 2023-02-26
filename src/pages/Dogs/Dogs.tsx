@@ -10,21 +10,27 @@ import DogCard from "../../components/DogCard/DogCard";
 import { Dog } from '../../types/models'
 
 interface DogsProps {
-  dogs: Dog[]
+  dogs: Dog[];
 }
 
 
-const Dogs = ({dogs}: DogsProps): JSX.Element => {
+const Dogs = (props: DogsProps): JSX.Element => {
+
+  const { dogs } = props
 
   if(!dogs.length) return <h3>NO DOGS</h3>
+
 
   return (
     <>
       <h1>We Need Homes!</h1>
       {dogs.map((dog: Dog) => 
-        <Link id={dog.id.toString()} to={`/dog/${dog.id}`} state={{ dog }} >
-          <DogCard dog={dog} />
-        </Link>
+        <div>
+          <Link id={dog.id.toString()} to={`/dog/${dog.id}`} >
+            <DogCard dog={dog} />
+          </Link>
+
+        </div>
       )}
     </>
   )

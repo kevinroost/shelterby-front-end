@@ -10,6 +10,7 @@ import { Dog } from "../../types/models"
 import { addToFutureDogsFormData } from "../../types/forms"
 
 interface ViewDogProps {
+
   profile?: Profile;
   addToFutureDogs: (formData: addToFutureDogsFormData) => void
 }
@@ -22,11 +23,7 @@ const ViewDog = (props: ViewDogProps): JSX.Element => {
   // const profile = location.state.profile
   const dogPic = dog.photo ? dog.photo : defaultPic
   const idArray = profile?.futureDogs?.map((dog: Dog)=>dog.id)
-  
 
-  console.log('PROFILE in view dog', profile);
-
-  console.log('DOG', dog);
   
 
   const handleClick = (): void => {

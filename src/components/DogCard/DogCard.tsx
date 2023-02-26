@@ -8,13 +8,17 @@ import defaultPic from "/dog-pit-vipers.jpeg"
 import { Dog } from "../../types/models";
 
 interface DogCardProps {
-  dog: Dog
+  dog: Dog;
+
 }
 
 const DogCard = (props: DogCardProps): JSX.Element => {
   const { dog } = props
 
   const dogPic = dog.photo ? dog.photo : defaultPic
+
+
+
 
   return (
     <>
@@ -25,6 +29,7 @@ const DogCard = (props: DogCardProps): JSX.Element => {
       />
       <p>{dog.name}</p>
       <p>{dog.age}</p>
+
     </>
   )
 

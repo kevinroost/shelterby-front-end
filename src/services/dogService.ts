@@ -35,11 +35,24 @@ async function update(formData: EditDogFormData): Promise<Dog> {
     return await res.json() as Dog
   } catch (error) {
     throw error
-    
+  }
+}
+
+async function deleteDog(dogId: number): Promise<void> {
+  try {
+    await fetch(`${BASE_URL}/${dogId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      }
+    })
+  } catch (error) {
+    throw error
   }
 }
 
 export {
   getAllDogs,
-  update
+  update,
+  deleteDog,
 }
