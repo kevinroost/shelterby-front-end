@@ -41,12 +41,13 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
           <h3>LISTED DOGS</h3>
           <p>make link to edit dog</p>
           {profile.listedDogs?.map((dog: Dog) => 
-            <DogCard dog={dog} />
+              <DogCard dog={dog} />
           )}
           <h3>FUTURE DOGS</h3>
-          <p>make link to dog deets</p>
           {profile.futureDogs?.map((dog: Dog) => 
-            <DogCard dog={dog} />
+            <Link to={`/dog/${dog.id}`} state={{ dog }} >
+              <DogCard dog={dog} />
+            </Link>
           )}
 
         <Link state={{profile}} to='/profile/edit'>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { login } from "../../services/authService";
+import { Link } from "react-router-dom";
 
 import * as dogService from '../../services/dogService'
 
@@ -35,10 +36,9 @@ const Dogs = ({dogs}: DogsProps): JSX.Element => {
     <>
       <h1>We Need Homes!</h1>
       {dogs.map((dog: Dog) => 
-        <DogCard
-          key={dog.id}
-          dog={dog}
-        />
+        <Link to={`/dog/${dog.id}`} state={{ dog }} >
+          <DogCard dog={dog} />
+        </Link>
       )}
     </>
   )
