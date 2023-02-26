@@ -59,15 +59,37 @@ function App(): JSX.Element {
       console.log(error);
     }
   }
+
+  const handleCreateDog = async(formData: EditDogFormData): 
+  Promise<void> => {
+    try {
+      const newDog = await dogService.create(formData)
+      dogs.push(newDog)
+      setDogs(dogs)
+      const profileData: Profile = await profileService.getProfile(user.profile.id)
+      if (profile) setProfile(profileData)
+      console.log(profile?.listedDogs);
+      
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
   
   const handleEditDog = async(formData: EditDogFormData, ): Promise<void> => {
     try {
       const updatedDog = await dogService.update(formData)
 
-      setDogs(dogs.map((dog) => (
-        dog.id === updatedDog.id ? updatedDog : dog
-      )))
 
+      setDogs(dogs.map((dog) => (
+        (dog.id === updatedDog.id) ? updatedDog : dog
+        )))
+
+      const profileData: Profile = await profileService.getProfile(user.profile.id)
+      if (profile) setProfile(profileData)
+
+      
       navigate('/myProfile')
     } catch (error) {
       console.log(error);
@@ -77,8 +99,8 @@ function App(): JSX.Element {
   const handleDeleteDog = async(dogId:number): Promise<void> => {
     try {
       await dogService.deleteDog(dogId)
-      const updatedDogs = profile?.listedDogs?.filter((dog: Dog) => (dog.id !== dogId))
-      const updatedProfile = {...profile, listedDogs: updatedDogs}
+      const updatedDogs = profile?.listedDogs ? profile?.listedDogs?.filter((dog: Dog) => (dog.id !== dogId)) : undefined
+      const updatedProfile: Profile = {...profile, listedDogs: updatedDogs}
       setProfile(updatedProfile)
       const dogData: Dog[] = await dogService.getAllDogs()
       setDogs(dogData)
@@ -104,7 +126,6 @@ function App(): JSX.Element {
       const fetchProfile = async (): Promise<void> => {
         try {
           const profileData: Profile = await profileService.getProfile(user.profile.id)
-          console.log('PROFILE in use effect', profileData)
           setProfile(profileData)
         } catch (error) {
           console.log(error)
@@ -172,6 +193,7 @@ function App(): JSX.Element {
           <MyProfile 
             // profile={profile!}
             handleDeleteDog={handleDeleteDog}
+            handleCreateDog={handleCreateDog}
             user={user}
             profile={profile}
           />

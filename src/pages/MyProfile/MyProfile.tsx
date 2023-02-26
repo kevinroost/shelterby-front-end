@@ -3,13 +3,17 @@ import { useState, useEffect } from "react"
 
 import DogCard from "../../components/DogCard/DogCard";
 import FamilyInfo from '../../components/FamilyInfo/FamilyInfo';
+import CreateDogForm from "../../components/DogForm/CreateDogForm";
 
 import { User, Profile, Dog } from "../../types/models"
+
+import { EditDogFormData } from "../../types/forms";
 
 import * as profileService from '../../services/profileService'
 
 interface MyProfileProps {
   handleDeleteDog: (dogId: number) => void;
+  handleCreateDog: (formData: EditDogFormData) => void;
   user: User | null;
   profile?: Profile;
 }
@@ -44,11 +48,11 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
   return (
     <>
       <FamilyInfo profile={user.profile}/>
-
+      <CreateDogForm handleCreateDog={props.handleCreateDog}/>
       <h3>LISTED DOGS</h3>
       {profile?.listedDogs?.map((dog: Dog) => 
         <div>
-          <Link to={`/dog/${dog.id}`} state={{dog}}>
+          <Link id={dog.id.toString()} to={`/dog/${dog.id}`} state={{dog}}>
             <DogCard dog={dog} />
           </Link>
           <button onClick={() => props.handleDeleteDog(dog.id)}>x</button>
@@ -57,7 +61,7 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
       
       <h3>FUTURE DOGS</h3>
       {profile?.futureDogs?.map((dog: Dog) => 
-        <Link to={`/dog/${dog.id}`} state={{dog}}>
+        <Link id={dog.id.toString()} to={`/dog/${dog.id}`} state={{dog}}>
           <DogCard dog={dog} />
         </Link>
       )}

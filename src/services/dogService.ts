@@ -22,6 +22,22 @@ async function getAllDogs(): Promise<Dog[]> {
   }
 }
 
+async function create(formData: EditDogFormData): Promise<Dog> {
+  try {
+    const res = await fetch(BASE_URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    return await res.json() as Dog
+  } catch (error) {
+    throw error
+  }
+}
+
 async function update(formData: EditDogFormData): Promise<Dog> {
   try {
     const res = await fetch(`${BASE_URL}/${formData.id}`, {
@@ -55,4 +71,5 @@ export {
   getAllDogs,
   update,
   deleteDog,
+  create,
 }

@@ -14,11 +14,11 @@ export interface EditProfileFormData {
 }
 
 export interface EditDogFormData {
-  id: number;
+  id?: number;
   name: string;
   age: number;
   breed: string;
-  about: string;
+  about?: string;
 }
 
 /* ---------===== auth forms =====--------- */
