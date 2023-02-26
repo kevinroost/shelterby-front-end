@@ -68,7 +68,7 @@ function App(): JSX.Element {
         dog.id === updatedDog.id ? updatedDog : dog
       )))
 
-      navigate(`/dog/${formData.id}`)
+      navigate('/myProfile')
     } catch (error) {
       console.log(error);
     }

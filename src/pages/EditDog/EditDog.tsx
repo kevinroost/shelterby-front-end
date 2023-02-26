@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { User } from "../../types/models"
-import { useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 import { Dog } from "../../types/models"
 
