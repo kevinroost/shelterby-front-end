@@ -5,6 +5,14 @@ export interface addToFutureDogsFormData {
   dogId: number
 }
 
+export interface EditProfileFormData {
+  id: number;
+  name: string;
+  lastName: string;
+  children: number;
+  backyard: string;
+}
+
 /* ---------===== auth forms =====--------- */
 
 export interface LoginFormData {

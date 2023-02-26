@@ -3,7 +3,7 @@ import * as tokenService from './tokenService'
 
 // types
 import { Profile, Dog } from '../types/models'
-import { addToFutureDogsFormData } from '../types/forms'
+import { addToFutureDogsFormData, EditProfileFormData } from '../types/forms'
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/profiles`
 
@@ -67,4 +67,21 @@ async function addPhoto(
   }
 }
 
-export { getAllProfiles, addPhoto, getProfile, createAssociation, }
+async function update(formData: EditProfileFormData): Promise<Profile> {
+  try {
+    const res = await fetch(`${BASE_URL}/${formData.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    return await res.json() as Profile
+  } catch (error) {
+    throw error
+    
+  }
+}
+
+export { getAllProfiles, addPhoto, getProfile, createAssociation, update, }

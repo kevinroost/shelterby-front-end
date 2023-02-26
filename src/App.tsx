@@ -30,7 +30,7 @@ import './App.css'
 
 // types
 import { User, Dog, Profile } from './types/models'
-import { addToFutureDogsFormData } from './types/forms'
+import { addToFutureDogsFormData, EditProfileFormData } from './types/forms'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
@@ -50,6 +50,17 @@ function App(): JSX.Element {
     setUser(authService.getUser())
   }
 
+  const handleEditProfile = async(formData: EditProfileFormData): Promise<void> => {
+    try {
+      const updatedProfile = await profileService.update(formData)
+      setProfile(updatedProfile)
+      navigate('/myProfile')
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  console.log('UPDATED PROFILE', profile);
+  
   
   const addToFutureDogs = async(formData: addToFutureDogsFormData): Promise<void> => {
     try {
@@ -116,7 +127,7 @@ function App(): JSX.Element {
         <Route
         path="/profile/edit"
         element={
-          <EditProfile user={user}/>
+          <EditProfile handleEditProfile={handleEditProfile} user={user}/>
         }
         />
         <Route
@@ -134,7 +145,7 @@ function App(): JSX.Element {
         <Route
         path="/myProfile"
         element={
-          <MyProfile user={user!}/>
+          <MyProfile profile={profile!}/>
         }
         />
         <Route

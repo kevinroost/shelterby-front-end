@@ -7,25 +7,26 @@ import FamilyInfo from '../../components/FamilyInfo/FamilyInfo';
 import * as profileService from '../../services/profileService'
 
 interface MyProfileProps {
-  user: User
+  profile: Profile
 }
 
 const MyProfile = (props: MyProfileProps): JSX.Element => {
-  const [profile, setProfile] = useState<Profile>()
+  // const [profile, setProfile] = useState<Profile>()
+  const { profile } = props
 
-  useEffect((): void  => {
-    const fetchProfile = async (): Promise<void> => {
-      try {
-        const profileData: Profile = await profileService.getProfile(props.user.profile.id)
-        setProfile(profileData)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    if (props.user) fetchProfile()
-  }, [])
+  // useEffect((): void  => {
+  //   const fetchProfile = async (): Promise<void> => {
+  //     try {
+  //       const profileData: Profile = await profileService.getProfile(props.user.profile.id)
+  //       setProfile(profileData)
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
+  //   if (props.user) fetchProfile()
+  // }, [])
 
-  if (!props.user) {
+  if (!profile) {
     return <Navigate to='/' replace />
   }
 
@@ -33,16 +34,16 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
   return (
     <>
 
-          <FamilyInfo profile={props.user.profile}/>
+          <FamilyInfo profile={props.profile}/>
           <br/>
-          {profile?.lastName}
+          {profile.lastName}
           <br/>
           LISTED DOGS LINK TO EDIT DOG
           <br/>
           FUTURE DOGS LINK TO DOG DEETS
 
-        <Link to='/profile/edit'>
-          Edit The {props.user.profile.lastName}s
+        <Link state={{profile}} to='/profile/edit'>
+          Edit The {profile.lastName}s
         </Link>
     </>
   )
