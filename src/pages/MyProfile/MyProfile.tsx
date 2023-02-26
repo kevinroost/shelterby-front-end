@@ -42,9 +42,8 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
       <FamilyInfo profile={user.profile}/>
 
       <h3>LISTED DOGS</h3>
-      <p>make link to edit dog</p>
       {profile?.listedDogs?.map((dog: Dog) => 
-        <Link to={`/dog/edit`} state={{ dog }} >
+        <Link to={`/dog/${dog.id}`} state={{ dog, profile }} >
           <DogCard dog={dog} />
         </Link>
       )}

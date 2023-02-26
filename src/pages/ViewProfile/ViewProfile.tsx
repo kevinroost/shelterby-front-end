@@ -35,7 +35,7 @@ const ViewProfile = (): JSX.Element => {
   return (
     <>
       <FamilyInfo profile={profile}/>
-      
+
       {profile?.listedDogs?.map((dog: Dog) => 
         <Link to={`/dog/${dog.id}`} state={{ dog }} >
           <DogCard dog={dog} />

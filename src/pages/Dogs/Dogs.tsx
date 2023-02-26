@@ -36,7 +36,7 @@ const Dogs = ({dogs}: DogsProps): JSX.Element => {
     <>
       <h1>We Need Homes!</h1>
       {dogs.map((dog: Dog) => 
-        <Link to={`/dog/${dog.id}`} state={{ dog }} >
+        <Link id={dog.id.toString()} to={`/dog/${dog.id}`} state={{ dog }} >
           <DogCard dog={dog} />
         </Link>
       )}

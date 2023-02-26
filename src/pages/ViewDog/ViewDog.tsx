@@ -13,13 +13,18 @@ interface ViewDogProps {
 }
 
 const ViewDog = (props: ViewDogProps): JSX.Element => {
-  const { profile, addToFutureDogs } = props
+  let { addToFutureDogs } = props
   
   const location = useLocation()
   const dog = location.state.dog
+  const profile = location.state.profile
   const dogPic = dog.photo ? dog.photo : defaultPic
   const idArray = profile?.futureDogs?.map((dog: Dog)=>dog.id)
+  
 
+  console.log('PROFILEID', location.state);
+  console.log('DOGID', dog.id);
+  
 
   const handleClick = (): void => {
     if (profile) addToFutureDogs({profileId: profile.id, dogId: dog.id })
@@ -38,7 +43,14 @@ const ViewDog = (props: ViewDogProps): JSX.Element => {
         {profile && 
             !idArray?.includes(dog.id) &&
               <p onClick={handleClick}>Add to Future Pups</p> || <p>Added to List!</p>
-          
+        }
+
+        {
+          (profile && (profile.id === dog.ownerId))
+        &&
+          <Link state={{dog}} to={`/dog/edit`}>
+            Edit {dog.name}
+          </Link>
         }
     </>
   )
