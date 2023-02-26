@@ -1,35 +1,36 @@
-import { User, Profile } from "../../types/models"
 import { Link, Navigate } from "react-router-dom"
 import { useState, useEffect } from "react" 
 
 import DogCard from "../../components/DogCard/DogCard";
 import FamilyInfo from '../../components/FamilyInfo/FamilyInfo';
 
-import { Dog } from "../../types/models";
+import { User, Profile, Dog } from "../../types/models"
 
 import * as profileService from '../../services/profileService'
 
 interface MyProfileProps {
-  profile: Profile
+  // profile: Profile;
+  user: User
 }
 
 const MyProfile = (props: MyProfileProps): JSX.Element => {
-  // const [profile, setProfile] = useState<Profile>()
-  const { profile } = props
+  const [profile, setProfile] = useState<Profile>()
+  // const { profile } = props
+  const { user } = props
 
-  // useEffect((): void  => {
-  //   const fetchProfile = async (): Promise<void> => {
-  //     try {
-  //       const profileData: Profile = await profileService.getProfile(props.user.profile.id)
-  //       setProfile(profileData)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  //   if (props.user) fetchProfile()
-  // }, [])
+  useEffect((): void  => {
+    const fetchProfile = async (): Promise<void> => {
+      try {
+        const profileData: Profile = await profileService.getProfile(user.profile.id)
+        setProfile(profileData)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    if (user) fetchProfile()
+  }, [])
 
-  if (!profile) {
+  if (!user) {
     return <Navigate to='/' replace />
   }
 
@@ -37,21 +38,21 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
   return (
     <>
 
-          <FamilyInfo profile={profile}/>
+          <FamilyInfo profile={user.profile}/>
           <h3>LISTED DOGS</h3>
           <p>make link to edit dog</p>
-          {profile.listedDogs?.map((dog: Dog) => 
+          {profile?.listedDogs?.map((dog: Dog) => 
               <DogCard dog={dog} />
           )}
           <h3>FUTURE DOGS</h3>
-          {profile.futureDogs?.map((dog: Dog) => 
+          {profile?.futureDogs?.map((dog: Dog) => 
             <Link to={`/dog/${dog.id}`} state={{ dog }} >
               <DogCard dog={dog} />
             </Link>
           )}
 
         <Link state={{profile}} to='/profile/edit'>
-          Edit The {profile.lastName}s
+          Edit The {profile?.lastName}s
         </Link>
     </>
   )

@@ -59,7 +59,6 @@ function App(): JSX.Element {
       console.log(error);
     }
   }
-  console.log('UPDATED PROFILE', profile);
   
   
   const addToFutureDogs = async(formData: addToFutureDogsFormData): Promise<void> => {
@@ -74,20 +73,20 @@ function App(): JSX.Element {
     }
   }
 
-  if (user){
-    useEffect((): void  => {
-      const fetchProfile = async (): Promise<void> => {
-        try {
-          const profileData: Profile = await profileService.getProfile(user.profile.id)
-          setProfile(profileData)
-        } catch (error) {
-          console.log(error)
-        }
-      }
-      if (user) fetchProfile()
-      console.log(profile)
-    }, [])
-  }
+  // if (user){
+  //   useEffect((): void  => {
+  //     const fetchProfile = async (): Promise<void> => {
+  //       try {
+  //         const profileData: Profile = await profileService.getProfile(user.profile.id)
+  //         setProfile(profileData)
+  //       } catch (error) {
+  //         console.log(error)
+  //       }
+  //     }
+  //     if (user) fetchProfile()
+  //     console.log(profile)
+  //   }, [])
+  // }
 
 
   useEffect((): void => {
@@ -145,7 +144,10 @@ function App(): JSX.Element {
         <Route
         path="/myProfile"
         element={
-          <MyProfile profile={profile!}/>
+          <MyProfile 
+            // profile={profile!}
+            user={user!}
+          />
         }
         />
         <Route
