@@ -60,15 +60,18 @@ function App(): JSX.Element {
     }
   }
 
+  const setProfileHelper = async (profile: Profile): Promise<void> => {
+    const profileData: Profile = await profileService.getProfile(profile.id)
+    setProfile(profileData)
+  }
+
   const handleCreateDog = async(formData: EditDogFormData): 
   Promise<void> => {
     try {
       const newDog = await dogService.create(formData)
       dogs.push(newDog)
       setDogs(dogs)
-      const profileData: Profile = await profileService.getProfile(user.profile.id)
-      if (profile) setProfile(profileData)
-      console.log(profile?.listedDogs);
+      if (profile) setProfileHelper(profile)
       
       
     } catch (error) {
@@ -86,8 +89,8 @@ function App(): JSX.Element {
         (dog.id === updatedDog.id) ? updatedDog : dog
         )))
 
-      const profileData: Profile = await profileService.getProfile(user.profile.id)
-      if (profile) setProfile(profileData)
+      
+      if (profile) setProfileHelper(profile)
 
       
       navigate('/myProfile')
