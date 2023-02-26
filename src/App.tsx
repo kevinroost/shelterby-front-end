@@ -146,7 +146,7 @@ function App(): JSX.Element {
         element={
           <MyProfile 
             // profile={profile!}
-            user={user!}
+            user={user}
           />
         }
         />

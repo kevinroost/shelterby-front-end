@@ -1,8 +1,12 @@
 import { Profile } from "../../types/models"
 import { useState, useEffect } from "react" 
 import { useParams } from "react-router"
+import { Link } from "react-router-dom";
 
 import FamilyInfo from '../../components/FamilyInfo/FamilyInfo';
+import DogCard from "../../components/DogCard/DogCard";
+
+import { Dog } from "../../types/models";
 
 import * as profileService from '../../services/profileService'
 
@@ -27,14 +31,15 @@ const ViewProfile = (): JSX.Element => {
     fetchProfile()
   }, [])
 }
-
-console.log('viewpage', profile);
-console.log('viewpage', profileId);
+  if (!profile) return <h1>Loading Family Information</h1>
   return (
     <>
-          {profile && <FamilyInfo profile={profile}/>}
-          <br/>
-          LISTED DOGS LINK TO EDIT DOG
+          <FamilyInfo profile={profile}/>
+          {profile?.listedDogs?.map((dog: Dog) => 
+            <Link to={`/dog/${dog.id}`} state={{ dog }} >
+              <DogCard dog={dog} />
+            </Link>
+          )}
         
     </>
   )

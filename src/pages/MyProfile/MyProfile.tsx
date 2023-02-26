@@ -10,7 +10,7 @@ import * as profileService from '../../services/profileService'
 
 interface MyProfileProps {
   // profile: Profile;
-  user: User
+  user: User | null
 }
 
 const MyProfile = (props: MyProfileProps): JSX.Element => {
@@ -18,17 +18,19 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
   // const { profile } = props
   const { user } = props
 
-  useEffect((): void  => {
-    const fetchProfile = async (): Promise<void> => {
-      try {
-        const profileData: Profile = await profileService.getProfile(user.profile.id)
-        setProfile(profileData)
-      } catch (error) {
-        console.log(error)
+  if (user) {
+    useEffect((): void  => {
+      const fetchProfile = async (): Promise<void> => {
+        try {
+          const profileData: Profile = await profileService.getProfile(user.profile.id)
+          setProfile(profileData)
+        } catch (error) {
+          console.log(error)
+        }
       }
-    }
-    if (user) fetchProfile()
-  }, [])
+      fetchProfile()
+    }, [])
+  }
 
   if (!user) {
     return <Navigate to='/' replace />
