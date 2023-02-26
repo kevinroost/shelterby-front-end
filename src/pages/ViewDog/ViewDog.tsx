@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 
 import defaultPic from "/dog-pit-vipers.jpeg"
 
+import FamilyCard from "../../components/FamilyCard/FamilyCard"
+
 import { Profile } from "../../types/models"
 import { Dog } from "../../types/models"
 import { addToFutureDogsFormData } from "../../types/forms"
@@ -13,17 +15,18 @@ interface ViewDogProps {
 }
 
 const ViewDog = (props: ViewDogProps): JSX.Element => {
-  let { addToFutureDogs } = props
+  let { addToFutureDogs, profile } = props
   
   const location = useLocation()
   const dog = location.state.dog
-  const profile = location.state.profile
+  // const profile = location.state.profile
   const dogPic = dog.photo ? dog.photo : defaultPic
   const idArray = profile?.futureDogs?.map((dog: Dog)=>dog.id)
   
 
-  console.log('PROFILEID', location.state);
-  console.log('DOGID', dog.id);
+  console.log('PROFILE in view dog', profile);
+
+  console.log('DOG', dog);
   
 
   const handleClick = (): void => {
@@ -51,6 +54,18 @@ const ViewDog = (props: ViewDogProps): JSX.Element => {
           <Link state={{dog}} to={`/dog/edit`}>
             Edit {dog.name}
           </Link>
+        }
+
+        {
+          (profile && (profile.id === dog.ownerId) && dog.futureFamilies)
+        &&
+          <section>
+            {dog.futureFamilies.map((family: Profile) => 
+              <Link id={family.id.toString()} to={`/profile/${family.id}`} state={{ family }} >
+                <FamilyCard profile={family} />
+              </Link>
+            )}
+          </section>
         }
     </>
   )

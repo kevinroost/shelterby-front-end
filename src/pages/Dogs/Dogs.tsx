@@ -15,21 +15,7 @@ interface DogsProps {
 
 
 const Dogs = ({dogs}: DogsProps): JSX.Element => {
-  // const [dogs, setDogs] = useState<Dog[]>([])
 
-  // useEffect((): void => {
-  //   const fetchDogs = async (): Promise<void> => {
-  //     try {
-  //       const dogData: Dog[] = await dogService.getAllDogs()
-  //       setDogs(dogData)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //     fetchDogs()
-  //   }
-  // }, [])
-  // console.log(dogService)
-  // console.log(dogs)
   if(!dogs.length) return <h3>NO DOGS</h3>
 
   return (

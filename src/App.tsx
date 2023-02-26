@@ -86,21 +86,20 @@ function App(): JSX.Element {
     }
   }
 
-  // if (user){
-  //   useEffect((): void  => {
-  //     const fetchProfile = async (): Promise<void> => {
-  //       try {
-  //         const profileData: Profile = await profileService.getProfile(user.profile.id)
-  //         setProfile(profileData)
-  //       } catch (error) {
-  //         console.log(error)
-  //       }
-  //     }
-  //     if (user) fetchProfile()
-  //     console.log(profile)
-  //   }, [])
-  // }
-
+  if (user){
+    useEffect((): void  => {
+      const fetchProfile = async (): Promise<void> => {
+        try {
+          const profileData: Profile = await profileService.getProfile(user.profile.id)
+          console.log('PROFILE in use effect', profileData)
+          setProfile(profileData)
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      fetchProfile()
+    }, [])
+  }
 
   useEffect((): void => {
     const fetchDogs = async (): Promise<void> => {
