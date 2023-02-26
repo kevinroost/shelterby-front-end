@@ -51,7 +51,7 @@ const EditProfile = (props: EditProfileProps): JSX.Element => {
           Family Name
         </label>
         <input
-          // type="text"
+          type="text"
           value={formData.lastName}
           name="lastName"
           onChange={handleChange}
@@ -62,7 +62,7 @@ const EditProfile = (props: EditProfileProps): JSX.Element => {
           Children
         </label>
         <input
-          // type="text"
+          type="text"
           value={formData.children}
           name="children"
           onChange={handleChange}
@@ -81,15 +81,6 @@ const EditProfile = (props: EditProfileProps): JSX.Element => {
             <option value="Open">Open</option>
             <option value="Fenced">Fenced</option>
           </select>
-
-
-
-        {/* <input
-          // type="text"
-          value={formData.backyard}
-          name="backyard"
-          onChange={handleChange}
-        /> */}
       </div>
       {/* <div className={styles.inputContainer}>
         <label htmlFor="photo-upload" className={styles.label}>

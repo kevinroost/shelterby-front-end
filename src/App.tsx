@@ -30,7 +30,7 @@ import './App.css'
 
 // types
 import { User, Dog, Profile } from './types/models'
-import { addToFutureDogsFormData, EditProfileFormData } from './types/forms'
+import { addToFutureDogsFormData, EditProfileFormData, EditDogFormData } from './types/forms'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
@@ -60,6 +60,19 @@ function App(): JSX.Element {
     }
   }
   
+  const handleEditDog = async(formData: EditDogFormData, ): Promise<void> => {
+    try {
+      const updatedDog = await dogService.update(formData)
+
+      setDogs(dogs.map((dog) => (
+        dog.id === updatedDog.id ? updatedDog : dog
+      )))
+
+      navigate(`/dog/${formData.id}`)
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   const addToFutureDogs = async(formData: addToFutureDogsFormData): Promise<void> => {
     try {
@@ -132,7 +145,7 @@ function App(): JSX.Element {
         <Route
         path="/dog/edit"
         element={
-          <EditDog />
+          <EditDog handleEditDog={handleEditDog}/>
         }
         />
         <Route

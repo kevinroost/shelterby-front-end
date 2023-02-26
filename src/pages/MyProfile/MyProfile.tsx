@@ -39,23 +39,26 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
 
   return (
     <>
+      <FamilyInfo profile={user.profile}/>
 
-          <FamilyInfo profile={user.profile}/>
-          <h3>LISTED DOGS</h3>
-          <p>make link to edit dog</p>
-          {profile?.listedDogs?.map((dog: Dog) => 
-              <DogCard dog={dog} />
-          )}
-          <h3>FUTURE DOGS</h3>
-          {profile?.futureDogs?.map((dog: Dog) => 
-            <Link to={`/dog/${dog.id}`} state={{ dog }} >
-              <DogCard dog={dog} />
-            </Link>
-          )}
-
-        <Link state={{profile}} to='/profile/edit'>
-          Edit The {profile?.lastName}s
+      <h3>LISTED DOGS</h3>
+      <p>make link to edit dog</p>
+      {profile?.listedDogs?.map((dog: Dog) => 
+        <Link to={`/dog/edit`} state={{ dog }} >
+          <DogCard dog={dog} />
         </Link>
+      )}
+      
+      <h3>FUTURE DOGS</h3>
+      {profile?.futureDogs?.map((dog: Dog) => 
+        <Link to={`/dog/${dog.id}`} state={{ dog }} >
+          <DogCard dog={dog} />
+        </Link>
+      )}
+
+      <Link state={{profile}} to='/profile/edit'>
+        Edit The {profile?.lastName}s
+      </Link>
     </>
   )
 

@@ -34,13 +34,13 @@ const ViewProfile = (): JSX.Element => {
   if (!profile) return <h1>Loading Family Information</h1>
   return (
     <>
-          <FamilyInfo profile={profile}/>
-          {profile?.listedDogs?.map((dog: Dog) => 
-            <Link to={`/dog/${dog.id}`} state={{ dog }} >
-              <DogCard dog={dog} />
-            </Link>
-          )}
-        
+      <FamilyInfo profile={profile}/>
+      
+      {profile?.listedDogs?.map((dog: Dog) => 
+        <Link to={`/dog/${dog.id}`} state={{ dog }} >
+          <DogCard dog={dog} />
+        </Link>
+      )}
     </>
   )
 
