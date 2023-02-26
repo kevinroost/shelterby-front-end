@@ -19,12 +19,8 @@ const EditProfile = (props: EditProfileProps): JSX.Element => {
     backyard: profile.backyard,
   })
 
-  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(evt.target.value);
-    console.log(evt.target.name);
-
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
-    console.log(formData);
   }
 
   const handleSubmit = async (evt: React.FormEvent): Promise<void> => {
@@ -76,12 +72,24 @@ const EditProfile = (props: EditProfileProps): JSX.Element => {
         <label htmlFor="backyard">
           Backyard
         </label>
-        <input
+        <select
+            name="backyard"
+            value={formData.backyard}
+            onChange={handleChange}
+          >
+            <option value="None">None</option>
+            <option value="Open">Open</option>
+            <option value="Fenced">Fenced</option>
+          </select>
+
+
+
+        {/* <input
           // type="text"
           value={formData.backyard}
           name="backyard"
           onChange={handleChange}
-        />
+        /> */}
       </div>
       {/* <div className={styles.inputContainer}>
         <label htmlFor="photo-upload" className={styles.label}>
