@@ -24,17 +24,10 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
     password: '',
     passwordConf: '',
   })
-  const [photoData, setPhotoData] = useState<PhotoFormData>({
-    photo: null
-  })
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     updateMessage('')
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
-  }
-
-  const handleChangePhoto = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    if (evt.target.files) setPhotoData({ photo: evt.target.files.item(0) })
   }
 
   const handleSubmit = async (evt: React.FormEvent): Promise<void> => {
@@ -42,14 +35,14 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
     if(isSubmitted) return
     try {
       setIsSubmitted(true)
-      await authService.signup(formData, photoData)
+      await authService.signup(formData)
       handleAuthEvt()
-      navigate('/')
     } catch (err) {
       console.log(err)
       handleErrMsg(err, updateMessage)
       setIsSubmitted(false)
     }
+    navigate('/profile/edit')
   }
 
   const { name, email, password, passwordConf } = formData
@@ -110,26 +103,15 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
           onChange={handleChange}
         />
       </div>
-      {/* <div className={styles.inputContainer}>
-        <label htmlFor="photo-upload" className={styles.label}>
-          Upload Photo
-        </label>
-        <input
-          type="file"
-          id="photo-upload"
-          name="photo"
-          onChange={handleChangePhoto}
-        />
-      </div> */}
+
       <div className={styles.inputContainer}>
-        <Link to='/editFamily'>
-          <button 
-            disabled={isFormInvalid() || isSubmitted} 
-            className={styles.button}
-          >
-            {!isSubmitted ? "Sign Up" : "🚀 Sending..."}
-          </button>
-        </Link>
+        
+        <button 
+          disabled={isFormInvalid() || isSubmitted} 
+          className={styles.button}
+        >
+          {!isSubmitted ? "Sign Up" : "🚀 Sending..."}
+        </button>
 
         <button>Cancel</button>
 

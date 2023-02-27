@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // page components
-import Signup from './pages/Signup/Signup'
-import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
@@ -37,19 +35,24 @@ function App(): JSX.Element {
   
   const [user, setUser] = useState<User | null>(authService.getUser())
   const [dogs, setDogs] = useState<Dog[]>([])
-  const [profile, setProfile] = useState<Profile>()
+  const [profile, setProfile] = useState<Profile >()
 
 
   const handleLogout = (): void => {
     authService.logout()
     setUser(null)
+    setProfile(undefined)
     navigate('/')
   }
 
+
+
   const handleAuthEvt = (): void => {
     setUser(authService.getUser())
+    console.log('HANDLEAUTHEVENT');
+    
   }
-
+  
   const handleEditProfile = async(formData: EditProfileFormData): Promise<void> => {
     try {
       const updatedProfile = await profileService.update(formData)
@@ -132,19 +135,25 @@ function App(): JSX.Element {
     }
   }
 
-  if (user){
-    useEffect((): void  => {
-      const fetchProfile = async (): Promise<void> => {
-        try {
-          const profileData: Profile = await profileService.getProfile(user.profile.id)
+
+  useEffect((): void  => {
+    const fetchProfile = async (): Promise<void> => {
+      let profileData: Profile | undefined
+      try {
+        if (user) {
+          profileData = await profileService.getProfile(user.profile.id)
+
+          
           setProfile(profileData)
-        } catch (error) {
-          console.log(error)
         }
-      }
-      fetchProfile()
-    }, [])
-  }
+
+      } catch (error) {
+        console.log(error)
+      } 
+    }
+    if (user) fetchProfile()
+  }, [user])
+  console.log('TRIGGERED AT SIGN UP', profile);
 
   useEffect((): void => {
     const fetchDogs = async (): Promise<void> => {
@@ -157,7 +166,6 @@ function App(): JSX.Element {
     }
     fetchDogs()
   }, [])
-  console.log(user);
   
 
   return (
@@ -173,23 +181,19 @@ function App(): JSX.Element {
           element={<Landing handleAuthEvt={handleAuthEvt} user={user} />} 
         />
         <Route
-          path="/signup"
-          element={<Signup handleAuthEvt={handleAuthEvt} />}
-        />
-        <Route
-          path="/login"
-          element={<Login handleAuthEvt={handleAuthEvt} />}
-        />
-        <Route
         path="/profile/edit"
         element={
-          <EditProfile handleEditProfile={handleEditProfile} user={user}/>
+          <ProtectedRoute user={user}>
+            <EditProfile profile={profile} handleEditProfile={handleEditProfile}/>
+          </ProtectedRoute>
         }
         />
         <Route
         path="/dog/edit"
         element={
-          <EditDog handleEditDog={handleEditDog}/>
+          <ProtectedRoute user={user}>
+            <EditDog handleEditDog={handleEditDog}/>
+          </ProtectedRoute>
         }
         />
         <Route
@@ -202,7 +206,6 @@ function App(): JSX.Element {
         path="/myProfile"
         element={
           <MyProfile 
-            // profile={profile!}
             handleDeleteDog={handleDeleteDog}
             handleCreateDog={handleCreateDog}
             user={user}

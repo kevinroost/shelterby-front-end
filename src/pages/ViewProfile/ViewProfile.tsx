@@ -1,4 +1,3 @@
-import { Profile } from "../../types/models"
 import { useState, useEffect } from "react" 
 import { useParams } from "react-router"
 import { Link } from "react-router-dom";
@@ -6,31 +5,32 @@ import { Link } from "react-router-dom";
 import FamilyInfo from '../../components/FamilyInfo/FamilyInfo';
 import DogCard from "../../components/DogCard/DogCard";
 
-import { Dog } from "../../types/models";
+import { Dog, Profile } from "../../types/models";
 
 import * as profileService from '../../services/profileService'
 
 type Params = {
-  profileId: string;
+  profileId?: string
 }
 
 const ViewProfile = (): JSX.Element => {
   const [profile, setProfile] = useState<Profile>()
-  const {profileId} = useParams<Params>()
+  const {profileId} = useParams<string>()
   
   if (profileId) {
-  useEffect((): void  => {
-    const fetchProfile = async (): Promise<void> => {
-      try {
-        const profileData: Profile = await profileService.getProfile(parseInt(profileId))
-        setProfile(profileData)
-      } catch (error) {
-        console.log(error)
+    useEffect((): void  => {
+      const fetchProfile = async (): Promise<void> => {
+        try {
+          const profileData: Profile = await profileService.getProfile(parseInt(profileId))
+          setProfile(profileData)
+        } catch (error) {
+          console.log(error)
+        }
       }
-    }
-    fetchProfile()
-  }, [])
-}
+      fetchProfile()
+    }, [])
+  }
+  
   if (!profile) return <h1>Loading Family Information</h1>
   return (
     <>
@@ -46,12 +46,21 @@ const ViewProfile = (): JSX.Element => {
           <p>{profile.email}</p>
         </div>
       </section>
-
-      {profile?.listedDogs?.map((dog: Dog) => 
-        <Link key={dog.id.toString()} to={`/dog/${dog.id}`} state={{ dog }} >
-          <DogCard dog={dog} />
-        </Link>
-      )}
+      {
+        profile.listedDogs
+      ?
+        <section>
+          <h2>Our Dog{profile.listedDogs.length > 1 ? `s` : ''}</h2>
+        
+          {profile?.listedDogs.map((dog: Dog) => 
+            <Link key={dog.id.toString()} to={`/dog/${dog.id}`} state={{ dog }} >
+              <DogCard dog={dog} />
+            </Link>
+          )}
+        </section>
+      :
+        <h2>We don't have any dogs</h2>
+      }
     </>
   )
 

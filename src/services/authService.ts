@@ -15,7 +15,6 @@ const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/auth`
 
 async function signup(
   formData: SignupFormData, 
-  photoFormData: PhotoFormData,
 ): Promise<void> {
   try {
     const res = await fetch(`${BASE_URL}/signup`, {
@@ -28,12 +27,6 @@ async function signup(
       throw new Error(json.err)
     } else if (json.token) {
       tokenService.setToken(json.token)
-      const user = tokenService.getUserFromToken()
-      if (photoFormData.photo && user) {
-        const photoData = new FormData()
-        photoData.append('photo', photoFormData.photo)
-        await addProfilePhoto(photoData, user.profile.id)
-      }
     }
   } catch (error) {
     throw error

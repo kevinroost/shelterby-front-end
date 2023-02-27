@@ -1,3 +1,5 @@
+import { User, Profile } from "./models";
+
 /* ---------======= custom props ======--------- */
 
 
@@ -7,4 +9,5 @@
 export interface AuthFormProps {
   handleAuthEvt: () => void;
   updateMessage: (msg: string) => void;
+  user: User | null;
 }

@@ -1,24 +1,28 @@
 import { useState } from 'react'
-import { User } from "../../types/models"
-import { Navigate, Link, useLocation } from "react-router-dom"
+import { Profile } from '../../types/models';
+import { Navigate } from "react-router-dom"
 import { EditProfileFormData } from '../../types/forms'
 
 interface EditProfileProps {
-  user: User | null;
+  profile?: Profile;
   handleEditProfile: (formData: EditProfileFormData) => void
 }
 
 const EditProfile = (props: EditProfileProps): JSX.Element => {
-  const location = useLocation()
-  const profile = location.state.profile
+  const {profile} = props
+  console.log('EDIT PAGE', profile);
+  
+  if (!profile) {
+    return <Navigate to='/' replace />
+  }
   const [formData, setFormData] = useState<EditProfileFormData>({
     id: profile.id,
     name: profile.name,
-    lastName: profile.lastName,
-    children: profile.children,
-    backyard: profile.backyard,
+    lastName: profile.lastName ? profile.lastName : '',
+    children: profile.children ? profile.children : 0,
+    backyard: profile.backyard ? profile.backyard : 'None',
     email: profile.email,
-    phoneNumber: profile.phoneNumber
+    phoneNumber: profile.phoneNumber ? profile.phoneNumber : ''
   })
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
@@ -30,9 +34,6 @@ const EditProfile = (props: EditProfileProps): JSX.Element => {
     props.handleEditProfile(formData)
   }
   
-  if (!props.user) {
-    return <Navigate to='/' replace />
-  }
 
   return (
     <form

@@ -9,18 +9,18 @@ import SignupForm from '../../components/SignupForm/SignupForm'
 
 
 // types
-import { User } from '../../types/models'
+import { User, Profile } from '../../types/models'
 
 interface LandingProps {
   user: User | null;
-  handleAuthEvt: () => void
+  handleAuthEvt: () => void;
 }
 
 const Landing = (props: LandingProps): JSX.Element => {
-  const { user } = props
   const [message, setMessage] = useState('')
 
   const updateMessage = (msg: string): void => setMessage(msg)
+
 
   return (
     <main className={styles.container}>

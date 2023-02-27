@@ -14,7 +14,7 @@ import { LoginFormData } from '../../types/forms'
 import { handleErrMsg } from '../../types/validators'
 
 const LoginForm = (props: AuthFormProps): JSX.Element => {
-  const {updateMessage, handleAuthEvt} = props
+  const {updateMessage, handleAuthEvt } = props
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState<LoginFormData>({
@@ -32,12 +32,14 @@ const LoginForm = (props: AuthFormProps): JSX.Element => {
     try {
       await authService.login(formData)
       handleAuthEvt()
-      navigate('/')
+      navigate('/myProfile')
     } catch (err) {
       console.log(err)
       handleErrMsg(err, updateMessage)
     }
   }
+
+
 
   const { email, password } = formData
 

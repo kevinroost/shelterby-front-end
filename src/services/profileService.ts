@@ -41,7 +41,6 @@ async function createAssociation(formData: addToFutureDogsFormData): Promise<Dog
       },
       body: JSON.stringify(formData)
     })
-    console.log('ASSOCIATION RESPONSE', res);
     
     return await res.json() as Dog
   } catch (error) {

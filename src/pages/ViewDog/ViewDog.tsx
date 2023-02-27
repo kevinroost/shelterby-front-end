@@ -11,7 +11,7 @@ import { addToFutureDogsFormData } from "../../types/forms"
 
 interface ViewDogProps {
 
-  profile?: Profile;
+  profile?: Profile ;
   addToFutureDogs: (formData: addToFutureDogsFormData) => void
 }
 
@@ -29,7 +29,8 @@ const ViewDog = (props: ViewDogProps): JSX.Element => {
   const handleClick = (): void => {
     if (profile) addToFutureDogs({profileId: profile.id, dogId: dog.id })
   }
-
+  console.log('PROFILE', profile);
+  
   return (
     <>
       <img src={dogPic} alt={`${dog.name}'s picture'`}/>
@@ -40,9 +41,11 @@ const ViewDog = (props: ViewDogProps): JSX.Element => {
         <Link to={`/profiles/${dog.ownerId}`}>
           More about the family
         </Link>
-        {profile && 
-            !idArray?.includes(dog.id) &&
-              <p onClick={handleClick}>Add to Future Pups</p> || <p>Added to List!</p>
+
+        {profile ? 
+          (idArray?.includes(dog.id)?<p>Added to List!</p>:<p onClick={handleClick}>Add to Future Pups</p>)
+        :
+          <p>Log In</p>
         }
 
         {
