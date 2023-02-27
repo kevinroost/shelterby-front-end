@@ -20,9 +20,11 @@ export interface Profile {
   userId: number;
   children?: number;
   backyard?: string;
-  about?: string
+  about?: string;
   futureDogs?: [];
   listedDogs?: [];
+  email?: string;
+  phoneNumber?: string;
   createdAt: string;
   updatedAt: string;
 }

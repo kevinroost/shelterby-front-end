@@ -12,10 +12,13 @@ const EditProfile = (props: EditProfileProps): JSX.Element => {
   const location = useLocation()
   const profile = location.state.profile
   const [formData, setFormData] = useState<EditProfileFormData>({
+    id: profile.id,
     name: profile.name,
     lastName: profile.lastName,
     children: profile.children,
     backyard: profile.backyard,
+    email: profile.email,
+    phoneNumber: profile.phoneNumber
   })
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
@@ -81,17 +84,28 @@ const EditProfile = (props: EditProfileProps): JSX.Element => {
             <option value="Fenced">Fenced</option>
           </select>
       </div>
-      {/* <div className={styles.inputContainer}>
-        <label htmlFor="photo-upload" className={styles.label}>
-          Upload Photo
+      <div>
+        <label htmlFor="email">
+          Email Address
         </label>
         <input
-          type="file"
-          id="photo-upload"
-          name="photo"
-          onChange={handleChangePhoto}
+          type="text"
+          value={formData.email?formData.email:''}
+          name="email"
+          onChange={handleChange}
         />
-      </div> */}
+      </div>
+      <div>
+        <label htmlFor="phoneNumber">
+          Phone Number
+        </label>
+        <input
+          type="text"
+          value={formData.phoneNumber?formData.phoneNumber:''}
+          name="phoneNumber"
+          onChange={handleChange}
+        />
+      </div>
       <div>
         <button>
           Update!

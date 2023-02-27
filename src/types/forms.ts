@@ -11,6 +11,8 @@ export interface EditProfileFormData {
   lastName: string;
   children: number;
   backyard: string;
+  phoneNumber?: string;
+  email?: string;
 }
 
 export interface EditDogFormData {

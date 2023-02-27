@@ -35,9 +35,20 @@ const ViewProfile = (): JSX.Element => {
   return (
     <>
       <FamilyInfo profile={profile}/>
+      <h3>Reach out to us!</h3>
+      <section id='contact'>
+        <div id='field-title'>
+          <p>Phone Number:</p>
+          <p>Email Address:</p>
+        </div>
+        <div id='field-info'>
+          <p>{profile.phoneNumber}</p>
+          <p>{profile.email}</p>
+        </div>
+      </section>
 
       {profile?.listedDogs?.map((dog: Dog) => 
-        <Link to={`/dog/${dog.id}`} state={{ dog }} >
+        <Link key={dog.id.toString()} to={`/dog/${dog.id}`} state={{ dog }} >
           <DogCard dog={dog} />
         </Link>
       )}

@@ -37,22 +37,18 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
   // }
 
 
-
-
   if (!user) {
     return <Navigate to='/' replace />
   }
 
-
-  {console.log(profile)}
   return (
     <>
       <FamilyInfo profile={user.profile}/>
       <CreateDogForm handleCreateDog={props.handleCreateDog}/>
       <h3>LISTED DOGS</h3>
       {profile?.listedDogs?.map((dog: Dog) => 
-        <div>
-          <Link id={dog.id.toString()} to={`/dog/${dog.id}`} state={{dog}}>
+        <div key={dog.id}>
+          <Link to={`/dog/${dog.id}`} state={{dog}}>
             <DogCard dog={dog} />
           </Link>
           <button onClick={() => props.handleDeleteDog(dog.id)}>x</button>
@@ -61,7 +57,7 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
       
       <h3>FUTURE DOGS</h3>
       {profile?.futureDogs?.map((dog: Dog) => 
-        <Link id={dog.id.toString()} to={`/dog/${dog.id}`} state={{dog}}>
+        <Link key={dog.id} to={`/dog/${dog.id}`} state={{dog}}>
           <DogCard dog={dog} />
         </Link>
       )}
