@@ -1,6 +1,6 @@
 import * as tokenService from './tokenService'
 
-import { EditDogFormData } from '../types/forms';
+import { EditDogFormData, PhotoFormData } from '../types/forms';
 
 import { Dog } from '../types/models'
 
@@ -22,6 +22,24 @@ async function getAllDogs(): Promise<Dog[]> {
   }
 }
 
+async function addDogPhoto(
+  photoData: FormData, 
+  dogId: number
+): Promise<string> {
+  try {
+    const res = await fetch(`${BASE_URL}/${dogId}/add-photo`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: photoData
+    })
+    return await res.json() as string
+  } catch (error) {
+    throw error
+  }
+}
+
 async function create(formData: EditDogFormData): Promise<Dog> {
   try {
     const res = await fetch(BASE_URL, {
@@ -32,6 +50,13 @@ async function create(formData: EditDogFormData): Promise<Dog> {
       },
       body: JSON.stringify(formData)
     })
+    // if (photoFormData.photo) {
+    //   const photoData = new FormData()
+    //   photoData.append('photo', photoFormData.photo)
+    //   console.log('FORMDATA', res.json());
+    //   await addDogPhoto(photoData, formData.id)
+    // }
+    
     return await res.json() as Dog
   } catch (error) {
     throw error
@@ -72,4 +97,5 @@ export {
   update,
   deleteDog,
   create,
+  addDogPhoto
 }

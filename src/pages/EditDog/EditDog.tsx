@@ -4,14 +4,15 @@ import { Link, useLocation } from "react-router-dom"
 
 import { Dog } from "../../types/models"
 
-import { EditDogFormData } from "../../types/forms"
+import { EditDogFormData, PhotoFormData } from "../../types/forms"
 
-import DogForm from "../../components/DogForm/EditDogForm"
+import EditDogForm from "../../components/DogForm/EditDogForm"
 
 
 
 interface EditDogProps {
-  handleEditDog: (formData: EditDogFormData) => void
+  handleEditDog: (formData: EditDogFormData, photoData: PhotoFormData) => void;
+
 }
 
 const EditDog = (props: EditDogProps): JSX.Element => {
@@ -20,7 +21,7 @@ const EditDog = (props: EditDogProps): JSX.Element => {
 
   return (
     <>
-      <DogForm handleEditDog={props.handleEditDog} dog={dog}/>
+      <EditDogForm handleEditDog={props.handleEditDog} dog={dog}/>
     </>
   )
 

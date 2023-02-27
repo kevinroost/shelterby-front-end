@@ -7,13 +7,13 @@ import CreateDogForm from "../../components/DogForm/CreateDogForm";
 
 import { User, Profile, Dog } from "../../types/models"
 
-import { EditDogFormData } from "../../types/forms";
+import { EditDogFormData, PhotoFormData } from "../../types/forms";
 
 import * as profileService from '../../services/profileService'
 
 interface MyProfileProps {
   handleDeleteDog: (dogId: number) => void;
-  handleCreateDog: (formData: EditDogFormData) => void;
+  handleCreateDog: (formData: EditDogFormData, photoData: PhotoFormData) => void;
   user: User | null;
   profile?: Profile;
 }

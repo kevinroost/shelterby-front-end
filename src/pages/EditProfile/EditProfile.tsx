@@ -12,7 +12,6 @@ const EditProfile = (props: EditProfileProps): JSX.Element => {
   const location = useLocation()
   const profile = location.state.profile
   const [formData, setFormData] = useState<EditProfileFormData>({
-    id: profile.id,
     name: profile.name,
     lastName: profile.lastName,
     children: profile.children,

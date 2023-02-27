@@ -6,7 +6,7 @@ export interface addToFutureDogsFormData {
 }
 
 export interface EditProfileFormData {
-  id: number;
+  id?: number;
   name: string;
   lastName: string;
   children: number;

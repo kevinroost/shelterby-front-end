@@ -2,10 +2,10 @@ import { useState } from "react";
 
 import { Dog } from "../../types/models"
 
-import { EditDogFormData } from "../../types/forms";
+import { EditDogFormData, PhotoFormData } from "../../types/forms";
 
 interface EditDogProps {
-  handleEditDog: (formData: EditDogFormData) => void;
+  handleEditDog: (formData: EditDogFormData, photoData: PhotoFormData) => void;
   dog: Dog
 }
 
@@ -21,13 +21,23 @@ const EditDogForm = (props: EditDogProps): JSX.Element => {
     about: dog.about,
   })
 
+  const [photoData, setPhotoData] = useState<PhotoFormData>({
+    photo: null
+  })
+
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
+  const handleChangePhoto = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    if (evt.target.files) {
+      setPhotoData({ photo: evt.target.files.item(0) })
+    }
+  }
+
   const handleSubmit = async (evt: React.FormEvent): Promise<void> => {
     evt.preventDefault()
-    props.handleEditDog(formData)
+    props.handleEditDog(formData, photoData)
   }
 
   return(
@@ -77,8 +87,8 @@ const EditDogForm = (props: EditDogProps): JSX.Element => {
           onChange={handleChange}
         />
       </div>
-      {/* <div className={styles.inputContainer}>
-        <label htmlFor="photo-upload" className={styles.label}>
+      <div>
+        <label htmlFor="photo-upload">
           Upload Photo
         </label>
         <input
@@ -87,7 +97,7 @@ const EditDogForm = (props: EditDogProps): JSX.Element => {
           name="photo"
           onChange={handleChangePhoto}
         />
-      </div> */}
+      </div>
       <div>
         <button>
           Update!

@@ -30,7 +30,7 @@ import './App.css'
 
 // types
 import { User, Dog, Profile } from './types/models'
-import { addToFutureDogsFormData, EditProfileFormData, EditDogFormData } from './types/forms'
+import { addToFutureDogsFormData, EditProfileFormData, EditDogFormData, PhotoFormData } from './types/forms'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
@@ -65,10 +65,15 @@ function App(): JSX.Element {
     setProfile(profileData)
   }
 
-  const handleCreateDog = async(formData: EditDogFormData): 
+  const handleCreateDog = async(dogFormData: EditDogFormData, photoFormData: PhotoFormData): 
   Promise<void> => {
     try {
-      const newDog = await dogService.create(formData)
+      const newDog = await dogService.create(dogFormData)
+      if (photoFormData.photo) {
+        const photoData = new FormData()
+        photoData.append('photo', photoFormData.photo)        
+        await dogService.addDogPhoto(photoData, newDog.id)
+      }
       dogs.push(newDog)
       setDogs(dogs)
       if (profile) setProfileHelper(profile)
@@ -80,9 +85,14 @@ function App(): JSX.Element {
     }
   }
   
-  const handleEditDog = async(formData: EditDogFormData, ): Promise<void> => {
+  const handleEditDog = async(formData: EditDogFormData, photoFormData: PhotoFormData): Promise<void> => {
     try {
       const updatedDog = await dogService.update(formData)
+      if (photoFormData.photo) {
+        const photoData = new FormData()
+        photoData.append('photo', photoFormData.photo)        
+        await dogService.addDogPhoto(photoData, updatedDog.id)
+      }
 
 
       setDogs(dogs.map((dog) => (
@@ -102,11 +112,9 @@ function App(): JSX.Element {
   const handleDeleteDog = async(dogId:number): Promise<void> => {
     try {
       await dogService.deleteDog(dogId)
-      const updatedDogs = profile?.listedDogs ? profile?.listedDogs?.filter((dog: Dog) => (dog.id !== dogId)) : undefined
-      const updatedProfile: Profile = {...profile, listedDogs: updatedDogs}
-      setProfile(updatedProfile)
-      const dogData: Dog[] = await dogService.getAllDogs()
-      setDogs(dogData)
+      const updatedDogs = profile?.listedDogs ? profile?.listedDogs.filter((dog: Dog) => (dog.id !== dogId)) : []
+      if (profile) setProfileHelper(profile)
+      setDogs(updatedDogs)
     } catch (error) {
       console.log(error);
     }
