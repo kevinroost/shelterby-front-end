@@ -10,14 +10,14 @@ import { Dog, Profile } from "../../types/models";
 import * as profileService from '../../services/profileService'
 
 type Params = {
-  profileId?: string
+  profileId: string
 }
 
 const ViewProfile = (): JSX.Element => {
   const [profile, setProfile] = useState<Profile>()
-  const {profileId} = useParams<string>()
+  const {profileId} = useParams<string>() as Params
   
-  if (profileId) {
+  // if (profileId) {
     useEffect((): void  => {
       const fetchProfile = async (): Promise<void> => {
         try {
@@ -29,7 +29,7 @@ const ViewProfile = (): JSX.Element => {
       }
       fetchProfile()
     }, [])
-  }
+  // }
   
   if (!profile) return <h1>Loading Family Information</h1>
   return (

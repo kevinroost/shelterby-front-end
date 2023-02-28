@@ -20,7 +20,7 @@ const FamilyInfo = (props: FamilyInfoProps): JSX.Element => {
       
       <p>{profile.about}</p>
       {
-        (profile.children !== 0)
+        (profile.children !== (0 || null))
       ?
         (
           (profile.children === 1)

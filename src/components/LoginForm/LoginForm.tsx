@@ -32,11 +32,11 @@ const LoginForm = (props: AuthFormProps): JSX.Element => {
     try {
       await authService.login(formData)
       handleAuthEvt()
-      navigate('/myProfile')
     } catch (err) {
       console.log(err)
       handleErrMsg(err, updateMessage)
     }
+    navigate('/dogs')
   }
 
 
@@ -77,9 +77,8 @@ const LoginForm = (props: AuthFormProps): JSX.Element => {
         <button disabled={isFormInvalid()} className={styles.button}>
           Log In
         </button>
-        <Link to="/">
-          <button>Cancel</button>
-        </Link>
+        <button>Cancel</button>
+
       </div>
     </form>
   )
