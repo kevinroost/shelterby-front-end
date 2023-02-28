@@ -9,7 +9,15 @@ const FamilyInfo = (props: FamilyInfoProps): JSX.Element => {
   
   return (
     <>
-      <h1>Hi! We're the {profile.lastName}s</h1>
+      {profile.lastName
+      ?
+        <h1>Hi! We're the {profile.lastName}s</h1>
+      :
+        <h1>Hi! I'm {profile.name}</h1>
+      }
+      
+      
+      
       <p>{profile.about}</p>
       {
         (profile.children === 0)
