@@ -36,9 +36,11 @@ h1 {
   margin-bottom: 16px;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 800px) {
   #forms {
     flex-direction: column;
   }
-
+  #landing-form-left {
+    border-right: none;
+  }
 }

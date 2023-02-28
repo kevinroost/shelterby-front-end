@@ -30,8 +30,9 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
   return (
     <main>
       <section id='about-my-family'>
-
-        <FamilyInfo profile={profile}/>
+        <h1>Hi! You're {profile.name}</h1>
+        <p>Number of kids: {profile.children}</p>
+        <p>Backyard: {profile.backyard}</p>
         <Link className='link' state={{profile}} to='/profile/edit'>
           <button>EDIT MY INFO</button>
         </Link>

@@ -19,9 +19,9 @@ const EditProfile = (props: EditProfileProps): JSX.Element => {
     name: profile.name,
     lastName: profile.lastName ? profile.lastName : '',
     children: profile.children ? profile.children : 0,
-    backyard: profile.backyard ? profile.backyard : 'None',
+    backyard: profile.backyard ? profile.backyard : 'none',
     email: profile.email,
-    about: profile.about,
+    about: profile.about ? profile.about : '',
     phoneNumber: profile.phoneNumber ? profile.phoneNumber : ''
   })
 
@@ -33,6 +33,7 @@ const EditProfile = (props: EditProfileProps): JSX.Element => {
     evt.preventDefault()
     props.handleEditProfile(formData)
   }
+  console.log(formData);
   
 
   return (

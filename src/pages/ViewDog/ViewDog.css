@@ -10,6 +10,7 @@
 }
 
 .fam-card {
+  border-left: 1px solid black;
   border-right: 1px solid black;
   padding: 14px;
   color: black;
