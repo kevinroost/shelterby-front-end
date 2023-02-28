@@ -11,9 +11,9 @@ const FamilyInfo = (props: FamilyInfoProps): JSX.Element => {
     <>
       {profile.lastName
       ?
-        <h1>Hi! We're the {profile.lastName}s</h1>
+        <h1 id='title'>Hi! We're the {profile.lastName}s</h1>
       :
-        <h1>Hi! I'm {profile.name}</h1>
+        <h1 id='title'>Hi! I'm {profile.name}</h1>
       }
       
       

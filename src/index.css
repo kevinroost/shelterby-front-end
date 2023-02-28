@@ -13,6 +13,10 @@ code {
   font-family: 'Shantell Sans', cursive;
 }
 
+.link {
+  text-decoration: none;
+}
+
 .button,
 button {
   background-color: white;
@@ -41,4 +45,8 @@ input:focus{
   background-color: rgb(182, 115, 0);
   border: none;
   border-bottom: 1px solid white;
+}
+
+#title {
+  margin: 24px 0px !important;
 }

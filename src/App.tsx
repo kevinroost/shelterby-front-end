@@ -122,6 +122,19 @@ function App(): JSX.Element {
       console.log(error);
     }
   }
+
+  const handleRemoveDog = async(dogId:number, profileId:number): Promise<void> => {
+    try {
+      console.log('BEFORE', profile);
+      await profileService.deleteAssociation(profileId, dogId)
+
+      if (profile) setProfileHelper(profile)
+      console.log('AFTER', profile);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   const addToFutureDogs = async(formData: addToFutureDogsFormData): Promise<void> => {
     try {
@@ -206,6 +219,7 @@ function App(): JSX.Element {
         element={
           <MyProfile 
             handleDeleteDog={handleDeleteDog}
+            handleRemoveDog={handleRemoveDog}
             handleCreateDog={handleCreateDog}
             user={user}
             profile={profile}

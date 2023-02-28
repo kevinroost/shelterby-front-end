@@ -48,6 +48,21 @@ async function createAssociation(formData: addToFutureDogsFormData): Promise<Dog
   }
 }
 
+async function deleteAssociation(profileId: number, dogId: number): Promise<void> {
+  try {
+    await fetch(`${BASE_URL}/${profileId}/futureDogs/${dogId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      }
+    })
+    console.log(profileId, dogId);
+    
+  } catch (error) {
+    throw error
+  }
+}
+
 async function addPhoto(
   photoData: FormData, 
   profileId: number
@@ -83,4 +98,4 @@ async function update(formData: EditProfileFormData): Promise<Profile> {
   }
 }
 
-export { getAllProfiles, addPhoto, getProfile, createAssociation, update, }
+export { getAllProfiles, addPhoto, getProfile, createAssociation, update, deleteAssociation }

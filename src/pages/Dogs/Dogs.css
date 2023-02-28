@@ -5,8 +5,8 @@ main{
 }
 
 .card {
-  text-decoration: none;
   margin: 16px;
+  display: inline-block;
 }
 
 #dogs-main {
@@ -14,3 +14,4 @@ main{
   flex-wrap: wrap;
   justify-content: center;
 }
+

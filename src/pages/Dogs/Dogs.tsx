@@ -22,7 +22,7 @@ const Dogs = (props: DogsProps): JSX.Element => {
 
   return (
     <main>
-      <h1>We Need Homes!</h1>
+      <h1 id='title'>We Need Homes!</h1>
       <section id='dogs-main'>
 
       {dogs.map((dog: Dog) => 

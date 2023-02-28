@@ -13,6 +13,7 @@ import * as profileService from '../../services/profileService'
 
 interface MyProfileProps {
   handleDeleteDog: (dogId: number) => void;
+  handleRemoveDog: (dogId: number, profileId: number) => void;
   handleCreateDog: (formData: EditDogFormData, photoData: PhotoFormData) => void;
   user: User | null;
   profile: Profile | null;
@@ -34,22 +35,32 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
       </Link>
       <h3>LIST A DOG</h3>
       <CreateDogForm handleCreateDog={props.handleCreateDog}/>
+
       <h3>LISTED DOGS</h3>
-      {profile?.listedDogs?.map((dog: Dog) => 
-        <div key={dog.id}>
-          <Link to={`/dog/${dog.id}`} state={{dog}}>
-            <DogCard dog={dog} />
-          </Link>
-          <button onClick={() => props.handleDeleteDog(dog.id)}>x</button>
-        </div>
-      )}
+
+      <section id='dogs-main'>
+        {profile?.listedDogs?.map((dog: Dog) => 
+          <div className='card' key={dog.id}>
+            <Link className='link' to={`/dog/${dog.id}`} state={{dog}}>
+              <DogCard dog={dog} />
+            </Link>
+            <button onClick={() => props.handleDeleteDog(dog.id)}>x</button>
+          </div>
+        )}
+      </section>
       
       <h3>FUTURE DOGS</h3>
-      {profile.futureDogs?.map((dog: Dog) => 
-        <Link key={dog.id} to={`/dog/${dog.id}`} state={{dog}}>
-          <DogCard dog={dog} />
-        </Link>
-      )}
+
+      <section id='dogs-main'>
+        {profile.futureDogs?.map((dog: Dog) => 
+          <div className='card' key={dog.id}>
+            <Link className='link' key={dog.id} to={`/dog/${dog.id}`} state={{dog}}>
+              <DogCard dog={dog} />
+            </Link>
+            <button onClick={() => props.handleRemoveDog(dog.id, profile.id)}>x</button>
+          </div>
+        )}
+      </section>
 
     </>
   )

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import { Link } from "react-router-dom";
 
+import './ViewProfile.css'
+
 import FamilyInfo from '../../components/FamilyInfo/FamilyInfo';
 import DogCard from "../../components/DogCard/DogCard";
 
@@ -51,12 +53,14 @@ const ViewProfile = (): JSX.Element => {
       ?
         <section>
           <h2>Our Dog{profile.listedDogs.length > 1 ? `s` : ''}</h2>
-        
-          {profile?.listedDogs.map((dog: Dog) => 
-            <Link key={dog.id.toString()} to={`/dog/${dog.id}`} state={{ dog }} >
-              <DogCard dog={dog} />
-            </Link>
-          )}
+          <section id='dogs-main'>
+            {profile?.listedDogs.map((dog: Dog) => 
+              <Link key={dog.id.toString()} to={`/dog/${dog.id}`} state={{ dog }} >
+                <DogCard dog={dog} />
+              </Link>
+            )}
+          </section>
+
         </section>
       :
         <h2>We don't have any dogs</h2>
