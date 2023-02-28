@@ -55,56 +55,56 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
     <form
       autoComplete="off"
       onSubmit={handleSubmit}
-      className={styles.container}
     >
-      <div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>Name</label>
-        <input
-          type="text"
-          className="name"
-          value={name}
-          name="name"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>
-          Email
-        </label>
-        <input
-          type="text"
-          className="email"
-          value={email}
-          name="email"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>
-          Password
-        </label>
-        <input
-          type="password"
-          className="password"
-          value={password}
-          name="password"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="confirm" className={styles.label}>
-          Confirm Password
-        </label>
-        <input
-          type="password"
-          className="confirm"
-          value={passwordConf}
-          name="passwordConf"
-          onChange={handleChange}
-        />
-      </div>
-
-      <div className={styles.inputContainer}>
+      <section id='inputs'>
+        <div className='input'>
+          <input
+            type="text"
+            className="name"
+            value={name}
+            name="name"
+            onChange={handleChange}
+          />
+          <label htmlFor="name">Name</label>
+        </div>
+        <div className='input'>
+          <input
+            type="text"
+            className="email"
+            value={email}
+            name="email"
+            onChange={handleChange}
+          />
+          <label htmlFor="email">
+            Email
+          </label>
+        </div>
+        <div className='input'>
+          <input
+            type="password"
+            className="password"
+            value={password}
+            name="password"
+            onChange={handleChange}
+          />
+          <label htmlFor="password">
+            Password
+          </label>
+        </div>
+        <div className='input'>
+          <input
+            type="password"
+            className="confirm"
+            value={passwordConf}
+            name="passwordConf"
+            onChange={handleChange}
+          />
+          <label htmlFor="confirm">
+            Confirm Password
+          </label>
+        </div>
+      </section>
+      <div id='submit-buttons'>
         
         <button 
           disabled={isFormInvalid() || isSubmitted} 

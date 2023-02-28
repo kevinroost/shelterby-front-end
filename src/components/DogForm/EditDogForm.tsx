@@ -49,6 +49,7 @@ const EditDogForm = (props: EditDogProps): JSX.Element => {
       <form
         autoComplete="off"
         onSubmit={handleSubmit}
+        className='not-landing'
       >
         <section id='inputs'>
           <div className='input'>

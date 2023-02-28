@@ -10,7 +10,7 @@ const FamilyCard = (props: FamilyCardProps): JSX.Element => {
 
   return (
     <>
-      <h4>{profile.lastName}</h4>
+      <p className='fam-card'>The {profile.lastName}s</p>
     </>
   )
 

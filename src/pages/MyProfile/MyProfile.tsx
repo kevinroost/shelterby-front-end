@@ -29,10 +29,13 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
 
   return (
     <main>
-      <FamilyInfo profile={profile}/>
-      <Link className='link' state={{profile}} to='/profile/edit'>
-        <button>EDIT MY INFO</button>
-      </Link>
+      <section id='about-my-family'>
+
+        <FamilyInfo profile={profile}/>
+        <Link className='link' state={{profile}} to='/profile/edit'>
+          <button>EDIT MY INFO</button>
+        </Link>
+      </section>
       <CreateDogForm handleCreateDog={props.handleCreateDog}/>
 
       <h2>LISTED DOGS</h2>

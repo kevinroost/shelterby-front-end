@@ -23,8 +23,13 @@ button {
   border: solid 1px rgb(255, 188, 73);
   border-radius: 5px;
   color: rgb(182, 115, 0);
-  font-size: 16px;
+  font-size: 20px;
   transition: .25s;
+  padding: 4px;
+}
+
+.button {
+  margin: 8px 0;
 }
 
 .button:hover,
@@ -57,8 +62,25 @@ select:focus {
   margin: 24px 0px !important;
 }
 
+p {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 30px;
+}
+
 p:hover,
 h2:hover {
   cursor: default
 }
 
+/* 
+@media (max-width: 600px) {
+  body main {
+    padding: 0;
+    padding-left: 25%;
+    padding-right: 32px;
+  }
+} */

@@ -35,7 +35,7 @@ const ViewProfile = (): JSX.Element => {
   
   if (!profile) return <h1>Loading Family Information</h1>
   return (
-    <>
+    <main>
       <FamilyInfo profile={profile}/>
       <h3>Reach out to us!</h3>
       <section id='contact'>
@@ -55,9 +55,7 @@ const ViewProfile = (): JSX.Element => {
           <h2>Our Dog{profile.listedDogs.length > 1 ? `s` : ''}</h2>
           <section id='dogs-main'>
             {profile?.listedDogs.map((dog: Dog) => 
-              <Link key={dog.id.toString()} to={`/dog/${dog.id}`} state={{ dog }} >
-                <DogCard dog={dog} />
-              </Link>
+              <DogCard key={dog.id} dog={dog} />
             )}
           </section>
 
@@ -65,7 +63,7 @@ const ViewProfile = (): JSX.Element => {
       :
         <h2>We don't have any dogs</h2>
       }
-    </>
+    </main>
   )
 
 }

@@ -43,6 +43,7 @@ const CreateDogForm = (props: CreateDogProps): JSX.Element => {
       <form
         autoComplete="off"
         onSubmit={handleSubmit}
+        className='not-landing'
       >
         <section id='inputs'>
           <div className='input'>

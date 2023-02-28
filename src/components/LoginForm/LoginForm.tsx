@@ -53,31 +53,35 @@ const LoginForm = (props: AuthFormProps): JSX.Element => {
       onSubmit={handleSubmit}
       className={styles.container}
     >
-      <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
-        <input
-          type="text"
-          className="email"
-          value={formData.email}
-          name="email"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
-        <input
-          type="password"
-          className="password"
-          value={formData.password}
-          name="password"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
+      <section id='inputs'>
+        <div  className='input'>
+          <input
+            type="text"
+            className="email"
+            value={formData.email}
+            name="email"
+            onChange={handleChange}
+          />
+          <label htmlFor="email" className={styles.label}>Email</label>
+        </div>
+        <div  className='input'>
+          <input
+            type="password"
+            className="password"
+            value={formData.password}
+            name="password"
+            onChange={handleChange}
+          />
+          <label htmlFor="password" className={styles.label}>Password</label>
+        </div>
+      </section>
+      <div id='submit-buttons'>
         <button disabled={isFormInvalid()} className={styles.button}>
           Log In
         </button>
-        <button>Cancel</button>
+        <button>
+          Cancel
+        </button>
 
       </div>
     </form>

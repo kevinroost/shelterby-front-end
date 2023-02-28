@@ -8,23 +8,35 @@
 #forms {
   display: flex;
   flex-direction: row;
+  border: 1px solid black;
+  border-radius: 16px;
+  margin-bottom: 32px;
 }
 
-.form {
-  padding: 16px;
+.landing-form {
+  padding: 24px 48px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
+  /* justify-content: center; */
+  margin: 16px 0;
 }
 
-.form > h3 {
+#landing-form-left {
+  border-right: 1px solid black;
+}
+
+#landing-form > h3 {
   justify-content: flex-start;
 }
 
 h1 {
   font-size: 60px;
+  margin-bottom: 16px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 950px) {
   #forms {
     flex-direction: column;
   }

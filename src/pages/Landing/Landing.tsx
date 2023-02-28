@@ -9,7 +9,7 @@ import SignupForm from '../../components/SignupForm/SignupForm'
 
 
 // types
-import { User, Profile } from '../../types/models'
+import { User } from '../../types/models'
 
 interface LandingProps {
   user: User | null;
@@ -27,13 +27,13 @@ const Landing = (props: LandingProps): JSX.Element => {
       <h1>ShelterBy</h1>
       <section id='forms'>
         
-        <section className='form'>
+        <section className='landing-form' id='landing-form-left'>
           <h3>LOG IN</h3>
           <p>{message}</p>
           <LoginForm {...props} updateMessage={updateMessage} />
         </section>
 
-        <section className='form'>
+        <section className='landing-form' id='landing-form'>
           <h3>SIGN UP</h3>
           <p>{message}</p>
           <SignupForm {...props} updateMessage={updateMessage} />

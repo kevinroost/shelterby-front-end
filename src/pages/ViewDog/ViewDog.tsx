@@ -1,6 +1,8 @@
 import { Link, useLocation } from "react-router-dom"
 import { useState, useEffect } from "react"
 
+import './ViewDog.css'
+
 import defaultPic from "/dog-pit-vipers.jpeg"
 
 import FamilyCard from "../../components/FamilyCard/FamilyCard"
@@ -32,18 +34,18 @@ const ViewDog = (props: ViewDogProps): JSX.Element => {
 
   
   return (
-    <>
-      <img src={dogPic} alt={`${dog.name}'s picture'`}/>
+    <main id='view-dog'>
+      <img src={dogPic} id='view-dog-img' alt={`${dog.name}'s picture'`}/>
       <h1>Hi! I'm {dog.name}.</h1>
       <p>{dog.about}</p>
       <p>I sure hope I find a home!</p>
       <p>Interested in this pup?</p>
-        <Link to={`/profiles/${dog.ownerId}`}>
-          More about the family
+        <Link className='link button' to={`/profiles/${dog.ownerId}`}>
+          More about {dog.name}'s family
         </Link>
 
         {profile ? 
-          (idArray?.includes(dog.id)?<p>Added to List!</p>:<p onClick={handleClick}>Add to Future Pups</p>)
+          (idArray?.includes(dog.id)?<p>Added to List!</p>:<p className='button' onClick={handleClick}>Add to Future Pups</p>)
         :
           <p>Log In</p>
         }
@@ -51,7 +53,7 @@ const ViewDog = (props: ViewDogProps): JSX.Element => {
         {
           (profile && (profile.id === dog.ownerId))
         &&
-          <Link state={{dog}} to={`/dog/edit`}>
+          <Link className='link button' state={{dog}} to={`/dog/edit`}>
             Edit {dog.name}
           </Link>
         }
@@ -59,15 +61,19 @@ const ViewDog = (props: ViewDogProps): JSX.Element => {
         {
           (profile && (profile.id === dog.ownerId) && dog.futureFamilies)
         &&
-          <section>
-            {dog.futureFamilies.map((family: Profile) => 
-              <Link id={family.id.toString()} to={`/profile/${family.id}`} state={{ family }} >
-                <FamilyCard profile={family} />
-              </Link>
-            )}
-          </section>
+          <>
+            <h3>These families are interested in {dog.name}. <br/> Click to see their profile!</h3>
+            
+            <section id='fam-card-section'>
+              {dog.futureFamilies.map((family: Profile) => 
+                <Link className='link' key={family.id} to={`/profiles/${family.id}`} state={{ family }} >
+                  <FamilyCard profile={family} />
+                </Link>
+              )}
+            </section>
+          </>
         }
-    </>
+    </main>
   )
 }
 
