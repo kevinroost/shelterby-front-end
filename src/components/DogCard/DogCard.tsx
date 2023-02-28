@@ -21,16 +21,18 @@ const DogCard = (props: DogCardProps): JSX.Element => {
 
 
   return (
-    <>
-      <img 
-        className='dog-pic' 
-        src={dogPic} 
-        alt={`${dog.name}'s picture'`} 
-      />
-      <p>{dog.name}</p>
-      <p>{dog.age}</p>
+    <div id='dog-card'>
+      <h3>{dog.name}</h3>
+      <section id='dog-info'>
+        <img 
+          className='dog-pic' 
+          src={dogPic} 
+          alt={`${dog.name}'s picture'`} 
+        />
+        <p>A {dog.age} year old <br/> {dog.breed}</p>
+      </section>
 
-    </>
+    </div>
   )
 
 }

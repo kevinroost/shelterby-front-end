@@ -1,0 +1,16 @@
+main{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card {
+  text-decoration: none;
+  margin: 16px;
+}
+
+#dogs-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

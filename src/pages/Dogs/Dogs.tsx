@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { login } from "../../services/authService";
+import './Dogs.css'
 import { Link } from "react-router-dom";
 
 import * as dogService from '../../services/dogService'
@@ -22,17 +21,17 @@ const Dogs = (props: DogsProps): JSX.Element => {
 
 
   return (
-    <>
+    <main>
       <h1>We Need Homes!</h1>
-      {dogs.map((dog: Dog) => 
-        <div key={dog.id} >
-          <Link to={`/dog/${dog.id}`} state={{dog}}>
-            <DogCard dog={dog} />
-          </Link>
+      <section id='dogs-main'>
 
-        </div>
+      {dogs.map((dog: Dog) => 
+          <Link className='card' key={dog.id} to={`/dog/${dog.id}`} state={{dog}}>
+            <DogCard  dog={dog} />
+          </Link>
       )}
-    </>
+      </section>
+    </main>
   )
 
 

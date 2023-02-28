@@ -1,9 +1,7 @@
 nav {
   background-color: white;
-  /* margin: 0; */
   padding-bottom: 8px;
   background-image: linear-gradient(white 60%, rgb(255, 188, 73));
-  position: relative;
   width: 100%;
 }
 
