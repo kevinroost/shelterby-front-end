@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // stylesheets
-import styles from './Landing.module.css'
+import './Landing.css'
 
 //components
 import LoginForm from '../../components/LoginForm/LoginForm';
@@ -23,14 +23,23 @@ const Landing = (props: LandingProps): JSX.Element => {
 
 
   return (
-    <main className={styles.container}>
+    <main className='container'>
       <h1>ShelterBy</h1>
-      <h3>LOG IN</h3>
-      <p>{message}</p>
-      <LoginForm {...props} updateMessage={updateMessage} />
-      <h3>SIGN UP</h3>
-      <p>{message}</p>
-      <SignupForm {...props} updateMessage={updateMessage} />
+      <section id='forms'>
+        
+        <section className='form'>
+          <h3>LOG IN</h3>
+          <p>{message}</p>
+          <LoginForm {...props} updateMessage={updateMessage} />
+        </section>
+
+        <section className='form'>
+          <h3>SIGN UP</h3>
+          <p>{message}</p>
+          <SignupForm {...props} updateMessage={updateMessage} />
+        </section>
+
+      </section>
 
     </main>
   )

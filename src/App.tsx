@@ -35,13 +35,13 @@ function App(): JSX.Element {
   
   const [user, setUser] = useState<User | null>(authService.getUser())
   const [dogs, setDogs] = useState<Dog[]>([])
-  const [profile, setProfile] = useState<Profile >()
+  const [profile, setProfile] = useState<Profile| null >(null)
 
 
   const handleLogout = (): void => {
     authService.logout()
     setUser(null)
-    setProfile(undefined)
+    setProfile(null)
     navigate('/')
   }
 
@@ -55,6 +55,8 @@ function App(): JSX.Element {
     try {
       const updatedProfile = await profileService.update(formData)
       setProfile(updatedProfile)
+      console.log(updatedProfile);
+      
       navigate('/myProfile')
     } catch (error) {
       console.log(error);

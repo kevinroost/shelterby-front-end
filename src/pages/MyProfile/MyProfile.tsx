@@ -15,20 +15,20 @@ interface MyProfileProps {
   handleDeleteDog: (dogId: number) => void;
   handleCreateDog: (formData: EditDogFormData, photoData: PhotoFormData) => void;
   user: User | null;
-  profile?: Profile;
+  profile: Profile | null;
 }
 
 const MyProfile = (props: MyProfileProps): JSX.Element => {
 
   const { profile, user } = props
 
-  if (!user) {
+  if (!profile) {
     return <Navigate to='/' replace />
   }
 
   return (
     <>
-      <FamilyInfo profile={user.profile}/>
+      <FamilyInfo profile={profile}/>
       <Link state={{profile}} to='/profile/edit'>
         EDIT MY INFO
       </Link>
@@ -45,7 +45,7 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
       )}
       
       <h3>FUTURE DOGS</h3>
-      {profile?.futureDogs?.map((dog: Dog) => 
+      {profile.futureDogs?.map((dog: Dog) => 
         <Link key={dog.id} to={`/dog/${dog.id}`} state={{dog}}>
           <DogCard dog={dog} />
         </Link>

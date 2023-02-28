@@ -11,7 +11,7 @@ import { addToFutureDogsFormData } from "../../types/forms"
 
 interface ViewDogProps {
 
-  profile?: Profile ;
+  profile: Profile | null;
   addToFutureDogs: (formData: addToFutureDogsFormData) => void
 }
 

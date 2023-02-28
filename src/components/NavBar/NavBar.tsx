@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom'
 // types
 import { User } from '../../types/models'
 
+import './NavBar.css'
+
 interface NavBarProps {
   user: User | null;
   handleLogout: () => void;
@@ -16,14 +18,14 @@ const NavBar = (props: NavBarProps): JSX.Element => {
     <nav>
       {user ?
         <ul>
-          <li><NavLink to="/myProfile">My Family</NavLink></li>
-          <li><NavLink to="/dogs">See The Dogs!</NavLink></li>
-          <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
+          <li id='dogs'><NavLink to="/dogs">See The Dogs!</NavLink></li>
+          <li id='family'><NavLink to="/myProfile">My Family</NavLink></li>
+          <li id='logout'><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
         </ul>
       :
         <ul>
           <li><NavLink to="/dogs">See The Dogs!</NavLink></li>
-          <li><NavLink to="">Log In/Sign Up</NavLink></li>
+          <li id='in-out'><NavLink to="">Log In/Sign Up</NavLink></li>
         </ul>
       }
     </nav>

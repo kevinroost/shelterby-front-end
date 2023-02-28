@@ -1,0 +1,43 @@
+nav {
+  background-color: white;
+  margin: 0;
+  padding-bottom: 8px;
+  background-image: linear-gradient(white 60%, rgb(255, 188, 73));
+  position: fixed;
+  width: 100%;
+}
+
+ul {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: stretch;
+}
+
+li {
+  flex-grow: 1;
+  list-style: none;
+}
+
+li * {
+  text-decoration: none;
+  color: rgb(182, 115, 0);
+  font-size: 20px;
+
+}
+
+#dogs {
+  text-align: left;
+}
+
+#family {
+  text-align: center;
+}
+
+#logout {
+  text-align: right;
+}
+
+#in-out {
+  text-align: right;
+
+}

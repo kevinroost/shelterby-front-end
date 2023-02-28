@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom"
 import { EditProfileFormData } from '../../types/forms'
 
 interface EditProfileProps {
-  profile?: Profile;
+  profile: Profile | null;
   handleEditProfile: (formData: EditProfileFormData) => void
 }
 
@@ -79,9 +79,9 @@ const EditProfile = (props: EditProfileProps): JSX.Element => {
             value={formData.backyard}
             onChange={handleChange}
           >
-            <option value="None">None</option>
-            <option value="Open">Open</option>
-            <option value="Fenced">Fenced</option>
+            <option value="none">none</option>
+            <option value="open">open</option>
+            <option value="fenced">fenced</option>
           </select>
       </div>
       <div>
