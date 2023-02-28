@@ -21,22 +21,21 @@ interface MyProfileProps {
 
 const MyProfile = (props: MyProfileProps): JSX.Element => {
 
-  const { profile, user } = props
+  const { profile } = props
 
   if (!profile) {
     return <Navigate to='/' replace />
   }
 
   return (
-    <>
+    <main>
       <FamilyInfo profile={profile}/>
-      <Link state={{profile}} to='/profile/edit'>
-        EDIT MY INFO
+      <Link className='link' state={{profile}} to='/profile/edit'>
+        <button>EDIT MY INFO</button>
       </Link>
-      <h3>LIST A DOG</h3>
       <CreateDogForm handleCreateDog={props.handleCreateDog}/>
 
-      <h3>LISTED DOGS</h3>
+      <h2>LISTED DOGS</h2>
 
       <section id='dogs-main'>
         {profile?.listedDogs?.map((dog: Dog) => 
@@ -47,7 +46,7 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
         )}
       </section>
       
-      <h3>FUTURE DOGS</h3>
+      <h2>FUTURE DOGS</h2>
 
       <section id='dogs-main'>
         {profile.futureDogs?.map((dog: Dog) => 
@@ -58,7 +57,7 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
         )}
       </section>
 
-    </>
+    </main>
   )
 
 }

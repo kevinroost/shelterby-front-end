@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router";
+
+import './DogForm.css'
 
 import { Dog } from "../../types/models"
 
@@ -10,7 +13,7 @@ interface EditDogProps {
 }
 
 const EditDogForm = (props: EditDogProps): JSX.Element => {
-
+  const navigate = useNavigate()
   const { dog } = props
 
   const [formData, setFormData] = useState<EditDogFormData>({
@@ -25,7 +28,7 @@ const EditDogForm = (props: EditDogProps): JSX.Element => {
     photo: null
   })
 
-  const handleChange = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
@@ -41,72 +44,84 @@ const EditDogForm = (props: EditDogProps): JSX.Element => {
   }
 
   return(
-    <form
-      autoComplete="off"
-      onSubmit={handleSubmit}
-    >
-      <div>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          value={formData.name}
-          name="name"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="age">
-          Age
-        </label>
-        <input
-          type="text"
-          value={formData.age}
-          name="age"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="breed">
-          Breed
-        </label>
-        <input
-          type="text"
-          value={formData.breed}
-          name="breed"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="about">
-          About
-        </label>
-        <input
-          type="text"
-          value={formData.about}
-          name="about"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="photo-upload">
-          Upload Photo
-        </label>
-        <input
-          type="file"
-          id="photo-upload"
-          name="photo"
-          onChange={handleChangePhoto}
-        />
-      </div>
-      <div>
-        <button>
-          Update!
-        </button>
+    <>
+      <h2>Editing {dog.name}</h2>
+      <form
+        autoComplete="off"
+        onSubmit={handleSubmit}
+      >
+        <section id='inputs'>
+          <div className='input'>
+            <input
+              type="text"
+              value={formData.name}
+              name="name"
+              onChange={handleChange}
+            />
+            <label htmlFor="name">Name</label>
+          </div>
+          <div className='input'>
+            <input
+              type="text"
+              value={formData.age}
+              name="age"
+              onChange={handleChange}
+            />
+            <label htmlFor="age">
+              Age
+            </label>
+          </div>
+          <div className='input'>
+            <input
+              type="text"
+              value={formData.breed}
+              name="breed"
+              onChange={handleChange}
+            />
+            <label htmlFor="breed">
+              Breed
+            </label>
+          </div>
+          <div className='input'>
+            <textarea
+              value={formData.about}
+              name="about"
+              onChange={handleChange}
+            />
+            <label htmlFor="about">
+              About
+            </label>
+          </div>
+          <div>
 
-        <button>Cancel</button>
 
-      </div>
-    </form>
+            {dog.photo ? <p id='photo-status'>&#10004;</p> : <p id='photo-status'>No Photo</p>}
+
+            <input
+              type="file"
+              className='custom-upload'
+              id="photo-upload"
+              name="photo"
+              onChange={handleChangePhoto}
+            />
+            <label className='button' htmlFor="photo-upload">
+            {dog.photo ? `Change Photo` : `Upload Photo`}
+            </label>
+          </div>
+        </section>
+        <div id='submit-buttons'>
+          
+          <button>
+            Update!
+          </button>
+
+          <button>
+            Cancel
+          </button>
+
+        </div>
+      </form>
+    </>
   )
 
 }

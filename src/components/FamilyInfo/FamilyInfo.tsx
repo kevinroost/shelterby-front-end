@@ -1,3 +1,5 @@
+import './FamilyInfo.css'
+
 import { Profile } from "../../types/models";
 
 interface FamilyInfoProps {
@@ -12,13 +14,13 @@ const FamilyInfo = (props: FamilyInfoProps): JSX.Element => {
       {profile.lastName
       ?
         <h1 id='title'>Hi! We're the {profile.lastName}s</h1>
-      :
+        :
         <h1 id='title'>Hi! I'm {profile.name}</h1>
       }
       
+      <h2>Here's a little about us.</h2>
       
-      
-      <p>{profile.about}</p>
+      {profile.about && <p>{profile.about}</p>}
       {
         (profile.children !== (0 || null))
       ?

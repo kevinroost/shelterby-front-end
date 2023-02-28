@@ -29,6 +29,7 @@
 img {
   width: 100px;
   justify-self: center;
+  border-radius: 16px;
 }
 
 #dog-card h3 {

@@ -20,9 +20,9 @@ const EditDog = (props: EditDogProps): JSX.Element => {
   const dog = location.state.dog
 
   return (
-    <>
+    <main>
       <EditDogForm handleEditDog={props.handleEditDog} dog={dog}/>
-    </>
+    </main>
   )
 
 }

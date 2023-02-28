@@ -21,7 +21,7 @@ const CreateDogForm = (props: CreateDogProps): JSX.Element => {
     photo: null
   })
 
-  const handleChange = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
@@ -38,75 +38,79 @@ const CreateDogForm = (props: CreateDogProps): JSX.Element => {
   }
 
   return(
-    <form
-      autoComplete="off"
-      onSubmit={handleSubmit}
-    >
-      <div>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          value={formData.name}
-          name="name"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="age">
-          Age
-        </label>
-        <input
-          type="text"
-          value={formData.age}
-          name="age"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="breed">
-          Breed
-        </label>
-        <input
-          type="text"
-          value={formData.breed}
-          name="breed"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="about">
-          About
-        </label>
-        <input
-          type="text"
-          value={formData.about}
-          name="about"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
+    <>
+      <h2>List A Dog</h2>
+      <form
+        autoComplete="off"
+        onSubmit={handleSubmit}
+      >
+        <section id='inputs'>
+          <div className='input'>
+            <input
+              type="text"
+              value={formData.name}
+              name="name"
+              onChange={handleChange}
+            />
+            <label htmlFor="name">Name</label>
+          </div>
+          <div className='input'>
+            <input
+              type="text"
+              value={formData.age}
+              name="age"
+              onChange={handleChange}
+            />
+            <label htmlFor="age">
+              Age
+            </label>
+          </div>
+          <div className='input'>
+            <input
+              type="text"
+              value={formData.breed}
+              name="breed"
+              onChange={handleChange}
+            />
+            <label htmlFor="breed">
+              Breed
+            </label>
+          </div>
+          <div className='input'>
+            <textarea
+              value={formData.about}
+              name="about"
+              onChange={handleChange}
+            />
+            <label htmlFor="about">
+              About
+            </label>
+          </div>
+          <div>
 
-        <label className='button' htmlFor="photo-upload">
-          Upload Photo
-        </label>
 
-        {photoData.photo ? <p>&#10004;</p> : <p>Upload a Photo</p>}
+            {photoData.photo ? <p id='photo-status'>&#10004;</p> : <p id='photo-status'>Upload a Photo</p>}
 
-        <input
-          type="file"
-          className='custom-upload'
-          id="photo-upload"
-          name="photo"
-          onChange={handleChangePhoto}
-        />
-      </div>
-      <div>
-        <button className='button'>
-          Create!
-        </button>
+            <input
+              type="file"
+              className='custom-upload'
+              id="photo-upload"
+              name="photo"
+              onChange={handleChangePhoto}
+            />
+            <label className='button' htmlFor="photo-upload">
+              Upload Photo
+            </label>
+          </div>
+        </section>
+        <div id='submit-buttons'>
+          <button className='button'>
+            Create!
+          </button>
 
-      </div>
-    </form>
+        </div>
+      </form>
+    </>
   )
 
 }

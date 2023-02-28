@@ -11,6 +11,7 @@ export interface EditProfileFormData {
   lastName: string;
   children: number;
   backyard: string;
+  about: string;
   phoneNumber?: string;
   email?: string;
 }

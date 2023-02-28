@@ -34,14 +34,19 @@ button:hover {
   color: white;
 }
 
-input {
+input,
+textarea, 
+select {
   background-color: inherit !important;
   border: none;
   border-bottom: solid 1px black;
   text-align: center;
+  font-family: 'Shantell Sans', cursive;
 }
 
-input:focus{
+input:focus,
+textarea:focus,
+select:focus {
   outline: none;
   background-color: rgb(182, 115, 0);
   border: none;
@@ -51,3 +56,9 @@ input:focus{
 #title {
   margin: 24px 0px !important;
 }
+
+p:hover,
+h2:hover {
+  cursor: default
+}
+

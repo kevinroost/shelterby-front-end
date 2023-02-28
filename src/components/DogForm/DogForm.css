@@ -1,4 +1,45 @@
+form {
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 128px;
+}
+
+h2{
+  text-align: center;
+}
+
+#inputs {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 24px;
+}
+
 .custom-upload {
   background-color: red;
   display: none;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#photo-status {
+  border-bottom: 1px solid black;
+}
+
+#submit-buttons > button {
+  margin: 32px 12px;
+}
+
+@media (max-width: 600px) {
+  form {
+    padding: 0;
+    padding-left: 25%;
+    padding-right: 32px;
+  }
+
 }
