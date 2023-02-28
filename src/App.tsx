@@ -49,8 +49,6 @@ function App(): JSX.Element {
 
   const handleAuthEvt = (): void => {
     setUser(authService.getUser())
-    console.log('HANDLEAUTHEVENT');
-    
   }
   
   const handleEditProfile = async(formData: EditProfileFormData): Promise<void> => {
@@ -231,7 +229,7 @@ function App(): JSX.Element {
           path="/change-password"
           element={
             <ProtectedRoute user={user}>
-              <ChangePassword handleAuthEvt={handleAuthEvt} />
+              <ChangePassword user={user} handleAuthEvt={handleAuthEvt} />
             </ProtectedRoute>
           }
         />

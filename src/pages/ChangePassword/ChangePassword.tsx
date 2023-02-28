@@ -7,9 +7,12 @@ import ChangePasswordForm from '../../components/ChangePasswordForm/ChangePasswo
 // stylesheets
 import styles from './ChangePassword.module.css'
 
+import { User } from '../../types/models'
+
 // types
 interface ChangePasswordProps {
   handleAuthEvt: () => void;
+  user: User | null;
 }
 
 const ChangePassword = (props: ChangePasswordProps): JSX.Element => {
