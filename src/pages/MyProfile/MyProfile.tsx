@@ -1,5 +1,6 @@
+import './MyProfile.css'
+
 import { Link, Navigate } from "react-router-dom"
-import { useState, useEffect } from "react" 
 
 import DogCard from "../../components/DogCard/DogCard";
 import FamilyInfo from '../../components/FamilyInfo/FamilyInfo';
@@ -9,7 +10,6 @@ import { User, Profile, Dog } from "../../types/models"
 
 import { EditDogFormData, PhotoFormData } from "../../types/forms";
 
-import * as profileService from '../../services/profileService'
 
 interface MyProfileProps {
   handleDeleteDog: (dogId: number) => void;
@@ -41,10 +41,8 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
       <section id='dogs-main'>
         {profile?.listedDogs?.map((dog: Dog) => 
           <div className='card' key={dog.id}>
-            <Link className='link' to={`/dog/${dog.id}`} state={{dog}}>
-              <DogCard dog={dog} />
-            </Link>
             <button onClick={() => props.handleDeleteDog(dog.id)}>x</button>
+            <DogCard dog={dog} />
           </div>
         )}
       </section>
@@ -54,10 +52,8 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
       <section id='dogs-main'>
         {profile.futureDogs?.map((dog: Dog) => 
           <div className='card' key={dog.id}>
-            <Link className='link' key={dog.id} to={`/dog/${dog.id}`} state={{dog}}>
-              <DogCard dog={dog} />
-            </Link>
             <button onClick={() => props.handleRemoveDog(dog.id, profile.id)}>x</button>
+            <DogCard dog={dog} />
           </div>
         )}
       </section>

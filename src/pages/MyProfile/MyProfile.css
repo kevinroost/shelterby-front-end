@@ -1,0 +1,15 @@
+.card {
+  position: relative;
+}
+
+.card > button {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  background-color: rgb(255, 188, 73);
+}
+
+.card > button:hover {
+  background-color: white;
+  color: rgb(182, 115, 0)
+}

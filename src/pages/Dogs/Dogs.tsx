@@ -26,9 +26,7 @@ const Dogs = (props: DogsProps): JSX.Element => {
       <section id='dogs-main'>
 
       {dogs.map((dog: Dog) => 
-          <Link className='card' key={dog.id} to={`/dog/${dog.id}`} state={{dog}}>
-            <DogCard  dog={dog} />
-          </Link>
+        <DogCard  key={dog.id} dog={dog} />
       )}
       </section>
     </main>

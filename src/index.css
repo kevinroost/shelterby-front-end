@@ -24,6 +24,7 @@ button {
   border-radius: 5px;
   color: rgb(182, 115, 0);
   font-size: 16px;
+  transition: .25s;
 }
 
 .button:hover,

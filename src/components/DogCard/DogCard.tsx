@@ -1,5 +1,7 @@
 import './DogCard.css'
 
+import { Link } from 'react-router-dom';
+
 import defaultPic from "/dog-pit-vipers.jpeg"
 
 
@@ -17,18 +19,19 @@ const DogCard = (props: DogCardProps): JSX.Element => {
 
   const dogPic = dog.photo ? dog.photo : defaultPic
 
-
-
-
   return (
     <div id='dog-card'>
-      <h3>{dog.name}</h3>
+      <Link className='link' to={`/dog/${dog.id}`} state={{dog}}>
+        <h3>{dog.name}</h3>
+      </Link>
       <section id='dog-info'>
-        <img 
-          className='dog-pic' 
-          src={dogPic} 
-          alt={`${dog.name}'s picture'`} 
-        />
+        <Link className='link' to={`/dog/${dog.id}`} state={{dog}}>
+          <img 
+            className='dog-pic' 
+            src={dogPic} 
+            alt={`${dog.name}'s picture'`} 
+          />
+        </Link>
         <p>A {dog.age} year old <br/> {dog.breed}</p>
       </section>
 
