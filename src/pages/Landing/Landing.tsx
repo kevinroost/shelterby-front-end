@@ -25,10 +25,10 @@ const Landing = (props: LandingProps): JSX.Element => {
   return (
     <main className={styles.container}>
       <h1>ShelterBy</h1>
-      <h3>Login</h3>
+      <h3>LOG IN</h3>
       <p>{message}</p>
       <LoginForm {...props} updateMessage={updateMessage} />
-      <h3>Sign Up</h3>
+      <h3>SIGN UP</h3>
       <p>{message}</p>
       <SignupForm {...props} updateMessage={updateMessage} />
 

@@ -85,24 +85,23 @@ const CreateDogForm = (props: CreateDogProps): JSX.Element => {
         />
       </div>
       <div>
-        <label 
-          htmlFor="photo-upload"
-        >
 
-          <p>Upload Photo</p>
-          {photoData.photo ? <p>&#10004;</p> : <p>Upload a Photo</p>}
-          <input
-            type="file"
-            className='custom-upload'
-            id="photo-upload"
-            name="photo"
-            onChange={handleChangePhoto}
-          />
-          
+        <label className='button' htmlFor="photo-upload">
+          Upload Photo
         </label>
+
+        {photoData.photo ? <p>&#10004;</p> : <p>Upload a Photo</p>}
+
+        <input
+          type="file"
+          className='custom-upload'
+          id="photo-upload"
+          name="photo"
+          onChange={handleChangePhoto}
+        />
       </div>
       <div>
-        <button>
+        <button className='button'>
           Create!
         </button>
 

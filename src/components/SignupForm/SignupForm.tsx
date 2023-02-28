@@ -10,7 +10,7 @@ import styles from './SignupForm.module.css'
 
 // types
 import { AuthFormProps } from '../../types/props'
-import { SignupFormData, PhotoFormData } from '../../types/forms'
+import { SignupFormData } from '../../types/forms'
 import { handleErrMsg } from '../../types/validators'
 
 const SignupForm = (props: AuthFormProps): JSX.Element => {
