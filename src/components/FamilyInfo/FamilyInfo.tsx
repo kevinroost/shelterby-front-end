@@ -6,7 +6,6 @@ interface FamilyInfoProps {
 
 const FamilyInfo = (props: FamilyInfoProps): JSX.Element => {
   const {profile} = props
-  console.log('component', profile);
   
   return (
     <>

@@ -8,7 +8,6 @@ const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/dogs`
 
 async function getAllDogs(): Promise<Dog[]> {
   try {
-    console.log('working');
     
     const res = await fetch(BASE_URL, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
@@ -50,12 +49,6 @@ async function create(formData: EditDogFormData): Promise<Dog> {
       },
       body: JSON.stringify(formData)
     })
-    // if (photoFormData.photo) {
-    //   const photoData = new FormData()
-    //   photoData.append('photo', photoFormData.photo)
-    //   console.log('FORMDATA', res.json());
-    //   await addDogPhoto(photoData, formData.id)
-    // }
     
     return await res.json() as Dog
   } catch (error) {

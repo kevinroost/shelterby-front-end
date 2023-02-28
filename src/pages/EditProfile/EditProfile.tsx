@@ -10,8 +10,7 @@ interface EditProfileProps {
 
 const EditProfile = (props: EditProfileProps): JSX.Element => {
   const {profile} = props
-  console.log('EDIT PAGE', profile);
-  
+
   if (!profile) {
     return <Navigate to='/' replace />
   }

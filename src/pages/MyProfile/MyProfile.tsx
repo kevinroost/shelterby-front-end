@@ -19,23 +19,8 @@ interface MyProfileProps {
 }
 
 const MyProfile = (props: MyProfileProps): JSX.Element => {
-  // const [profile, setProfile] = useState<Profile>()
+
   const { profile, user } = props
-
-  // if (user) {
-  //   useEffect((): void  => {
-  //     const fetchProfile = async (): Promise<void> => {
-  //       try {
-  //         const profileData: Profile = await profileService.getProfile(user.profile.id)
-  //         setProfile(profileData)
-  //       } catch (error) {
-  //         console.log(error)
-  //       }
-  //     }
-  //     fetchProfile()
-  //   }, [])
-  // }
-
 
   if (!user) {
     return <Navigate to='/' replace />

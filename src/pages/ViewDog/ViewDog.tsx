@@ -29,7 +29,7 @@ const ViewDog = (props: ViewDogProps): JSX.Element => {
   const handleClick = (): void => {
     if (profile) addToFutureDogs({profileId: profile.id, dogId: dog.id })
   }
-  console.log('PROFILE', profile);
+
   
   return (
     <>

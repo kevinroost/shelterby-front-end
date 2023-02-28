@@ -151,7 +151,6 @@ function App(): JSX.Element {
     }
     if (user) fetchProfile()
   }, [user])
-  console.log('TRIGGERED AT SIGN UP', profile);
 
   useEffect((): void => {
     const fetchDogs = async (): Promise<void> => {
