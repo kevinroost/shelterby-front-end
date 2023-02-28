@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import './DogForm.css'
+
 import { EditDogFormData, PhotoFormData } from "../../types/forms"
 
 interface CreateDogProps {
@@ -83,22 +85,26 @@ const CreateDogForm = (props: CreateDogProps): JSX.Element => {
         />
       </div>
       <div>
-        <label htmlFor="photo-upload">
-          Upload Photo
+        <label 
+          htmlFor="photo-upload"
+        >
+
+          <p>Upload Photo</p>
+          {photoData.photo ? <p>&#10004;</p> : <p>Upload a Photo</p>}
+          <input
+            type="file"
+            className='custom-upload'
+            id="photo-upload"
+            name="photo"
+            onChange={handleChangePhoto}
+          />
+          
         </label>
-        <input
-          type="file"
-          id="photo-upload"
-          name="photo"
-          onChange={handleChangePhoto}
-        />
       </div>
       <div>
         <button>
           Create!
         </button>
-
-        <button>Cancel</button>
 
       </div>
     </form>

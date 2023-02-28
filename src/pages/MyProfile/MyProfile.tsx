@@ -29,6 +29,10 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
   return (
     <>
       <FamilyInfo profile={user.profile}/>
+      <Link state={{profile}} to='/profile/edit'>
+        EDIT MY INFO
+      </Link>
+      <h3>LIST A DOG</h3>
       <CreateDogForm handleCreateDog={props.handleCreateDog}/>
       <h3>LISTED DOGS</h3>
       {profile?.listedDogs?.map((dog: Dog) => 
@@ -47,9 +51,6 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
         </Link>
       )}
 
-      <Link state={{profile}} to='/profile/edit'>
-        Edit The {profile?.lastName}s
-      </Link>
     </>
   )
 
