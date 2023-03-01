@@ -20,7 +20,7 @@
 
 ## Getting Started
 
-- <a href="https://shelterby.netlify.app/dog/2">Here</a> is a link to the deployed application. 
+- <a href="https://shelterby.netlify.app/">Here</a> is a link to the deployed application. 
 - <a href="https://whimsical.com/shelterby-84ddoigSLPjsmfFEE7MGek">Here</a> is a link to the the app's planning materials. 
 
 ## Features
