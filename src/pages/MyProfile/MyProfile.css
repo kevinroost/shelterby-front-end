@@ -6,8 +6,8 @@
 
 .card > button {
   position: absolute;
-  left: 24px;
-  top: 24px;
+  bottom: 24px;
+  right: 24px;
   background-color: rgb(255, 188, 73);
 }
 

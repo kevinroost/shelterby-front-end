@@ -20,7 +20,7 @@
   align-items: center;
   text-align: center;
   /* justify-content: center; */
-  margin: 16px 0;
+  margin: 16px;
 }
 
 #landing-form-left {
@@ -42,5 +42,6 @@ h1 {
   }
   #landing-form-left {
     border-right: none;
+    border-bottom: 1px solid black;
   }
 }

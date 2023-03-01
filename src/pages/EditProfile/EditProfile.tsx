@@ -61,7 +61,7 @@ const EditProfile = (props: EditProfileProps): JSX.Element => {
               onChange={handleChange}
             />
             <label htmlFor="lastName">
-              Family Name
+              Last Name
             </label>
           </div>
           <div className='input'>

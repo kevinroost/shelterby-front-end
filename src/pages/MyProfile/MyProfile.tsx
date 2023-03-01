@@ -44,9 +44,8 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
       <section id='dogs-main'>
         {profile?.listedDogs?.map((dog: Dog) => 
           <div className='card' key={dog.id}>
-            <button onClick={() => props.handleDeleteDog(dog.id)}>x</button>
+            <button onClick={() => props.handleDeleteDog(dog.id)}>delete</button>
             <Link className='link' to={`/dog/${dog.id}`}>
-              
               <DogCard dog={dog}/>
             </Link>
           </div>
@@ -58,8 +57,10 @@ const MyProfile = (props: MyProfileProps): JSX.Element => {
       <section id='dogs-main'>
         {profile.futureDogs?.map((dog: Dog) => 
           <div className='card' key={dog.id}>
-            <button onClick={() => props.handleRemoveDog(dog.id, profile.id)}>x</button>
-            <DogCard dog={dog} />
+            <button onClick={() => props.handleRemoveDog(dog.id, profile.id)}>remove</button>
+            <Link className='link' to={`/dog/${dog.id}`}>
+              <DogCard dog={dog}/>
+            </Link>
           </div>
         )}
       </section>

@@ -10,10 +10,17 @@
 }
 
 .fam-card {
+  background-color: rgb(182, 115, 0);
   border-left: 1px solid black;
   border-right: 1px solid black;
   padding: 14px;
   color: black;
+  background-image: linear-gradient(rgb(255, 188, 73), rgb(182, 115, 0) 20% 80%, rgb(255, 188, 73));
+}
+
+.fam-card:hover {
+  cursor: pointer;
+  background-image: linear-gradient(rgb(255, 188, 73), white 20% 80%, rgb(255, 188, 73));
 }
 
 #options {

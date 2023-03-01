@@ -13,7 +13,7 @@ const FamilyInfo = (props: FamilyInfoProps): JSX.Element => {
     <>
       {profile.lastName
       ?
-        <h1 id='title'>Hi! We're the {profile.lastName}s</h1>
+        <h1 id='title'>Hi! We're the {profile.lastName} Family</h1>
         :
         <h1 id='title'>Hi! I'm {profile.name}</h1>
       }

@@ -17,10 +17,6 @@ code {
   text-decoration: none;
 }
 
-#dog-card * {
-  text-decoration: none;
-}
-
 .button,
 button {
   background-color: white;
