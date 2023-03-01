@@ -1,6 +1,6 @@
 import * as tokenService from './tokenService'
 
-import { EditDogFormData, PhotoFormData, CreateDogFormData } from '../types/forms';
+import { EditDogFormData, CreateDogFormData } from '../types/forms';
 
 import { Dog } from '../types/models'
 

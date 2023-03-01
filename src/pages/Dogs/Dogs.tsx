@@ -1,8 +1,6 @@
 import './Dogs.css'
 import { Link } from "react-router-dom";
 
-import * as dogService from '../../services/dogService'
-
 import DogCard from "../../components/DogCard/DogCard";
 
 //types

@@ -1,10 +1,6 @@
 import './DogCard.css'
 
-import { Link } from 'react-router-dom';
-
 import defaultPic from "/dog-pit-vipers.jpeg"
-
-
 
 //types
 import { Dog } from "../../types/models";
@@ -21,17 +17,15 @@ const DogCard = (props: DogCardProps): JSX.Element => {
 
   return (
     <div id='dog-card'>
-      {/* <Link className='link' to={`/dog/${dog.id}`} state={{dog}}> */}
+
         <h3>{dog.name}</h3>
-      {/* </Link> */}
+
       <section id='dog-info'>
-        {/* <Link className='link' to={`/dog/${dog.id}`} state={{dog}}> */}
-          <img 
-            className='dog-pic' 
-            src={dogPic} 
-            alt={`${dog.name}'s picture'`} 
-          />
-        {/* </Link> */}
+        <img 
+          className='dog-pic' 
+          src={dogPic} 
+          alt={`${dog.name}'s picture'`} 
+        />
         <p>A {dog.age} year old <br/> {dog.breed}</p>
       </section>
 

@@ -3,7 +3,6 @@ import './MyProfile.css'
 import { Link, Navigate } from "react-router-dom"
 
 import DogCard from "../../components/DogCard/DogCard";
-import FamilyInfo from '../../components/FamilyInfo/FamilyInfo';
 import CreateDogForm from "../../components/DogForm/CreateDogForm";
 
 import { User, Profile, Dog } from "../../types/models"

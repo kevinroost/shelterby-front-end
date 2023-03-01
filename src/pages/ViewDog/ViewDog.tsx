@@ -22,8 +22,6 @@ interface ViewDogProps {
 const ViewDog = (props: ViewDogProps): JSX.Element => {
   let { addToFutureDogs, profile } = props
   const { id } = useParams() as {id: string}
-  const location = useLocation()
-  // const stateDog = location.state.dog
   const [dog, setDog] = useState<Dog>()
   const idArray = profile?.futureDogs?.map((dog: Dog)=>dog.id)
   

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react" 
 import { useParams } from "react-router"
-import { Link } from "react-router-dom";
 
 import './ViewProfile.css'
 
@@ -19,19 +18,19 @@ const ViewProfile = (): JSX.Element => {
   const [profile, setProfile] = useState<Profile>()
   const {profileId} = useParams<string>() as Params
   
-  // if (profileId) {
-    useEffect((): void  => {
-      const fetchProfile = async (): Promise<void> => {
-        try {
-          const profileData: Profile = await profileService.getProfile(parseInt(profileId))
-          setProfile(profileData)
-        } catch (error) {
-          console.log(error)
-        }
+
+  useEffect((): void  => {
+    const fetchProfile = async (): Promise<void> => {
+      try {
+        const profileData: Profile = await profileService.getProfile(parseInt(profileId))
+        setProfile(profileData)
+      } catch (error) {
+        console.log(error)
       }
-      fetchProfile()
-    }, [])
-  // }
+    }
+    fetchProfile()
+  }, [])
+
   
   if (!profile) return <h1>Loading Family Information</h1>
   return (

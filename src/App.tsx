@@ -4,7 +4,6 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // page components
 import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Dogs from './pages/Dogs/Dogs'
 import EditProfile from './pages/EditProfile/EditProfile'
@@ -230,14 +229,6 @@ function App(): JSX.Element {
         element={
           <ViewProfile />
         }
-        />
-        <Route
-          path="/profiles"
-          element={
-            <ProtectedRoute user={user}>
-              <Profiles />
-            </ProtectedRoute>
-          }
         />
         <Route
           path="/change-password"

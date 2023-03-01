@@ -1,13 +1,11 @@
 // services
 import * as tokenService from './tokenService'
-import { addPhoto as addProfilePhoto } from './profileService'
 
 // types
 import { 
   ChangePasswordFormData,
   LoginFormData,
   SignupFormData,
-  PhotoFormData
 } from '../types/forms'
 import { User } from '../types/models'
 
