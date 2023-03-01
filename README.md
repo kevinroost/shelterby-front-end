@@ -3,6 +3,10 @@
 <p align="center">
   <img width="30%" src="./public/dog-pit-vipers.jpeg" >
 </p>
+<p align="center">
+  <img width="30%" src="./public/ShelterBy-SC-1.png" >
+  <img width="30%" src="./public/ShelterBy-SC-2.png" >
+</p>
 
 <br>
 
