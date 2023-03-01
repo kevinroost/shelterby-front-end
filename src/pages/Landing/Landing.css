@@ -27,13 +27,18 @@
   border-right: 1px solid black;
 }
 
-#landing-form > h3 {
+.landing-form > h3 {
   justify-content: flex-start;
+  margin: 0;
 }
 
 h1 {
   font-size: 60px;
   margin-bottom: 16px;
+}
+
+#app-title {
+  margin-top: 0;
 }
 
 @media (max-width: 800px) {

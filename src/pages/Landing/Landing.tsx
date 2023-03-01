@@ -24,7 +24,7 @@ const Landing = (props: LandingProps): JSX.Element => {
 
   return (
     <main className='container'>
-      <h1>ShelterBy</h1>
+      <h1 id='app-title'>ShelterBy</h1>
       <section id='forms'>
         
         <section className='landing-form' id='landing-form-left'>
