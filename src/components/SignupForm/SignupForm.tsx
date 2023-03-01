@@ -14,9 +14,12 @@ import { SignupFormData } from '../../types/forms'
 import { handleErrMsg } from '../../types/validators'
 
 const SignupForm = (props: AuthFormProps): JSX.Element => {
-  const {updateMessage, handleAuthEvt} = props
+
   const navigate = useNavigate()
 
+  const [message, setMessage] = useState('')
+
+  const updateMessage = (msg: string): void => setMessage(msg)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [formData, setFormData] = useState<SignupFormData>({
     name: '',
@@ -36,13 +39,14 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
     try {
       setIsSubmitted(true)
       await authService.signup(formData)
-      handleAuthEvt()
+      props.handleAuthEvt()
+      navigate('/profile/edit')
     } catch (err) {
       console.log(err)
       handleErrMsg(err, updateMessage)
       setIsSubmitted(false)
+      navigate('/')
     }
-    navigate('/profile/edit')
   }
 
   const { name, email, password, passwordConf } = formData

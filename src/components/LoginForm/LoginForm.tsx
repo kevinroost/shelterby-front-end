@@ -14,9 +14,12 @@ import { LoginFormData } from '../../types/forms'
 import { handleErrMsg } from '../../types/validators'
 
 const LoginForm = (props: AuthFormProps): JSX.Element => {
-  const {updateMessage, handleAuthEvt } = props
+
   const navigate = useNavigate()
 
+  const [message, setMessage] = useState('')
+
+  const updateMessage = (msg: string): void => setMessage(msg)
   const [formData, setFormData] = useState<LoginFormData>({
     email: '',
     password: '',
@@ -31,12 +34,13 @@ const LoginForm = (props: AuthFormProps): JSX.Element => {
     evt.preventDefault()
     try {
       await authService.login(formData)
-      handleAuthEvt()
+      props.handleAuthEvt()
+      navigate('/dogs')
     } catch (err) {
       console.log(err)
       handleErrMsg(err, updateMessage)
+      navigate('/')
     }
-    navigate('/dogs')
   }
 
 
@@ -53,6 +57,7 @@ const LoginForm = (props: AuthFormProps): JSX.Element => {
       onSubmit={handleSubmit}
       className={styles.container}
     >
+      <p>{message}</p>
       <section id='inputs'>
         <div  className='input'>
           <input

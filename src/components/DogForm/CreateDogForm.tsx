@@ -63,7 +63,7 @@ const CreateDogForm = (props: CreateDogProps): JSX.Element => {
               onChange={handleChange}
             />
             <label htmlFor="age">
-              Age
+              Age (in years)
             </label>
           </div>
           <div className='input'>
@@ -90,7 +90,7 @@ const CreateDogForm = (props: CreateDogProps): JSX.Element => {
           <div>
 
 
-            {photoData.photo ? <p id='photo-status'>&#10004;</p> : <p id='photo-status'>Upload a Photo</p>}
+            {photoData.photo ? <p id='photo-status'>&#10004;</p> : <p id='photo-status'>No Photo</p>}
 
             <input
               type="file"
