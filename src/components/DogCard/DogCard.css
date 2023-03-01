@@ -26,8 +26,9 @@
   gap: 12px;
 }
 
-img {
-  width: 100px;
+#dog-card img {
+  max-width: 100px;
+  max-height: 100px;
   justify-self: center;
   border-radius: 16px;
 }

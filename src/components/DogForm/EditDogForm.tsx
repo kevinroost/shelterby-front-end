@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router";
 
 import './DogForm.css'
 
@@ -13,9 +12,9 @@ interface EditDogProps {
 }
 
 const EditDogForm = (props: EditDogProps): JSX.Element => {
-  const navigate = useNavigate()
   const { dog } = props
 
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const [formData, setFormData] = useState<EditDogFormData>({
     id: dog.id,
     name: dog.name,
@@ -39,6 +38,7 @@ const EditDogForm = (props: EditDogProps): JSX.Element => {
   }
 
   const handleSubmit = async (evt: React.FormEvent): Promise<void> => {
+    setIsSubmitted(true)
     evt.preventDefault()
     props.handleEditDog(formData, photoData)
   }
@@ -113,7 +113,7 @@ const EditDogForm = (props: EditDogProps): JSX.Element => {
         <div id='submit-buttons'>
           
           <button>
-            Update!
+            {!isSubmitted ? "Update!" : "Updating..."}
           </button>
 
           <button>

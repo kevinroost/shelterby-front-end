@@ -2,15 +2,15 @@ import { useState } from "react";
 
 import './DogForm.css'
 
-import { EditDogFormData, PhotoFormData } from "../../types/forms"
+import { CreateDogFormData, PhotoFormData } from "../../types/forms"
 
 interface CreateDogProps {
-  handleCreateDog: (formData: EditDogFormData, photoData: PhotoFormData) => void;
+  handleCreateDog: (formData: CreateDogFormData, photoData: PhotoFormData) => void;
 }
 
 const CreateDogForm = (props: CreateDogProps): JSX.Element => {
 
-  const [formData, setFormData] = useState<EditDogFormData>({
+  const [formData, setFormData] = useState<CreateDogFormData>({
     name: '',
     age: 0,
     breed: '',

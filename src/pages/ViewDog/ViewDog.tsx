@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom"
-import { useState, useEffect } from "react"
 
 import './ViewDog.css'
 
@@ -22,7 +21,6 @@ const ViewDog = (props: ViewDogProps): JSX.Element => {
   
   const location = useLocation()
   const dog = location.state.dog
-  // const profile = location.state.profile
   const dogPic = dog.photo ? dog.photo : defaultPic
   const idArray = profile?.futureDogs?.map((dog: Dog)=>dog.id)
 
@@ -35,9 +33,9 @@ const ViewDog = (props: ViewDogProps): JSX.Element => {
   
   return (
     <main id='view-dog'>
-      <img src={dogPic} id='view-dog-img' alt={`${dog.name}'s picture'`}/>
+      <img src={dogPic} id='view-dog-img' alt={`${dog.name}'s picture`}/>
       <h1>Hi! I'm {dog.name}.</h1>
-      <p>{dog.about}</p>
+      <p>A {dog.age} year old {dog.breed}, {dog.about}</p>
       <p>I sure hope I find a home!</p>
 
       <section id='options'>

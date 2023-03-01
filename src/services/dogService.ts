@@ -66,6 +66,7 @@ async function update(formData: EditDogFormData): Promise<Dog> {
       },
       body: JSON.stringify(formData)
     })
+
     return await res.json() as Dog
   } catch (error) {
     throw error

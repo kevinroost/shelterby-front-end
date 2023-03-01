@@ -17,6 +17,14 @@ export interface EditProfileFormData {
 }
 
 export interface EditDogFormData {
+  id: number;
+  name: string;
+  age: number;
+  breed: string;
+  about?: string;
+}
+
+export interface CreateDogFormData {
   id?: number;
   name: string;
   age: number;

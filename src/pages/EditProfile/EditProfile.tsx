@@ -33,7 +33,6 @@ const EditProfile = (props: EditProfileProps): JSX.Element => {
     evt.preventDefault()
     props.handleEditProfile(formData)
   }
-  console.log(formData);
   
 
   return (

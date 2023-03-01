@@ -45,7 +45,6 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
       console.log(err)
       handleErrMsg(err, updateMessage)
       setIsSubmitted(false)
-      navigate('/')
     }
   }
 

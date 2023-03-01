@@ -1,75 +1,42 @@
-# Decoupled PERN Stack with JWT Auth Template - Front End
+## ShelterBy!
 
-This is the front end of a decoupled PERN Stack app that includes JWT Authentication.
+<p align="center">
+  <img width="30%" src="./public/dog-pit-vipers.jpeg" >
+</p>
 
-When combined with the back end found [here](https://github.com/SEI-Remote/decoupled-pern-jwt-auth-template-back-end-cjs), you'll have all you need to build a full stack PERN app!
+<br>
 
-Use this to go build things! 🚀
 
-## To Use This Template
+This app was born out of a desire to optimize a very manual casting process. Instead of sifting through resumes one by one, Cast allows Talent to setup a profile and have Casting Directors reach out to them. It's more simple, streamined, and modern. 
 
-**Replace `<name-of-your-app-here>`, including the `<` and `>` in the commands below with the name of your app!**
+## Getting Started
 
-```bash
-git clone https://github.com/SEI-Remote/decoupled-pern-jwt-auth-template-front-end-ts <name-of-your-app-here>-front-end
-cd <name-of-your-app-here>-front-end
-code .
-```
+- <a href="https://shelterby.netlify.app/dog/2">Here</a> is a link to the deployed application. 
+- <a href="https://whimsical.com/shelterby-84ddoigSLPjsmfFEE7MGek">Here</a> is a link to the the app's planning materials. 
 
-With the project open in VS Code, open a terminal and run:
+## Features
 
-```bash
-rm -rf .git
-```
+- Streamlined user experience flow.
+- Separate Talent and Casting director profiles.
+- The ability to share things like headshots, a demo reel, and important details with casting directors.
+- Our powerful search tool allows talent to connect with others for networking purposes and Casting Directors to filter search results with relevant criteria to making a casting decision.
+- Casting directors can create lists to reference back to (i.e. Great Comedic Actors, or Professional Stuntmen).
 
-Here's what your command line output should like after this step (note that the indicator that we are in a git repository is gone!)
 
-<img src="https://i.imgur.com/L47kNOZ.png" alt="The command line before and after running the rm -rf .git command. Before git:(main) is visible indiating that the directory contains a git repository, after the command it is not.">
+## Technology
 
-Re-initialize a git repository:
+- React
+- JavaScript
+- TypeScript
+- PostgreSQL
+- Sequelize
+- Node.js
+- Express.js
+- Netlify
+- Fly.io
+- Cloudinary
 
-```bash
-git init
-```
+## Future Enhancements
 
-Create a repo for this project on GitHub and add that remote to your project with:
-
-```bash
-git remote add origin your-repo-URL-here
-```
-
-Run `npm i` to fetch the template's dependencies:
-
-```bash
-npm i
-```
-
-touch a `.env` file:
-
-```bash
-touch .env
-```
-
-Fill it with the following:
-
-```
-VITE_BACK_END_SERVER_URL=http://localhost:3001
-```
-
-> 🚨 DO NOT place secrets in this `.env` file. The contents of this file WILL be exposed to site visitors. We are only using the front-end .env to create variables specific to the environment the application is running in.
-
-Ensure the project starts up with:
-
-```bash
-npm run dev
-```
-
-Delete this README.md, then make an initial commit:
-
-```bash
-git add .
-git commit -m "initial commit"
-git push origin main
-```
-
-You're done!
+ - Present dogs that are geographically near the user
+ - Upload an album of pictures for a dog

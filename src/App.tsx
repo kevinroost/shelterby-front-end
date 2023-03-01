@@ -90,12 +90,12 @@ function App(): JSX.Element {
   
   const handleEditDog = async(formData: EditDogFormData, photoFormData: PhotoFormData): Promise<void> => {
     try {
-      const updatedDog = await dogService.update(formData)
       if (photoFormData.photo) {
         const photoData = new FormData()
         photoData.append('photo', photoFormData.photo)        
-        await dogService.addDogPhoto(photoData, updatedDog.id)
+        await dogService.addDogPhoto(photoData, formData.id)
       }
+      const updatedDog = await dogService.update(formData)
 
 
       setDogs(dogs.map((dog) => (
@@ -106,7 +106,7 @@ function App(): JSX.Element {
       if (profile) setProfileHelper(profile)
 
       
-      navigate('/myProfile')
+      navigate(`/myProfile`)
     } catch (error) {
       console.log(error);
     }
