@@ -17,6 +17,7 @@ const Dogs = (props: DogsProps): JSX.Element => {
 
   const { dogs } = props
 
+
   if(!dogs.length) return <h3>NO DOGS</h3>
 
 
@@ -26,7 +27,9 @@ const Dogs = (props: DogsProps): JSX.Element => {
       <section id='dogs-main'>
 
       {dogs.map((dog: Dog) => 
-        <DogCard  key={dog.id} dog={dog} />
+        <Link className='link' key={dog.id} to={`/dog/${dog.id}`}>
+          <DogCard dog={dog}/>
+        </Link>
       )}
       </section>
     </main>

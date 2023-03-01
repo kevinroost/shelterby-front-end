@@ -21,17 +21,17 @@ const DogCard = (props: DogCardProps): JSX.Element => {
 
   return (
     <div id='dog-card'>
-      <Link className='link' to={`/dog/${dog.id}`} state={{dog}}>
+      {/* <Link className='link' to={`/dog/${dog.id}`} state={{dog}}> */}
         <h3>{dog.name}</h3>
-      </Link>
+      {/* </Link> */}
       <section id='dog-info'>
-        <Link className='link' to={`/dog/${dog.id}`} state={{dog}}>
+        {/* <Link className='link' to={`/dog/${dog.id}`} state={{dog}}> */}
           <img 
             className='dog-pic' 
             src={dogPic} 
             alt={`${dog.name}'s picture'`} 
           />
-        </Link>
+        {/* </Link> */}
         <p>A {dog.age} year old <br/> {dog.breed}</p>
       </section>
 

@@ -13,7 +13,11 @@ code {
   font-family: 'Shantell Sans', cursive;
 }
 
-.link {
+* {
+  text-decoration: none;
+}
+
+#dog-card * {
   text-decoration: none;
 }
 
@@ -37,6 +41,7 @@ button:hover {
   border: solid 1px white;
   background-color: rgb(182, 115, 0);
   color: white;
+  cursor: pointer;
 }
 
 input,

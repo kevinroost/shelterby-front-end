@@ -28,7 +28,7 @@ import './App.css'
 
 // types
 import { User, Dog, Profile } from './types/models'
-import { addToFutureDogsFormData, EditProfileFormData, EditDogFormData, PhotoFormData } from './types/forms'
+import { addToFutureDogsFormData, EditProfileFormData, EditDogFormData, PhotoFormData, CreateDogFormData } from './types/forms'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
@@ -68,7 +68,7 @@ function App(): JSX.Element {
     setProfile(profileData)
   }
 
-  const handleCreateDog = async(dogFormData: EditDogFormData, photoFormData: PhotoFormData): 
+  const handleCreateDog = async(dogFormData: CreateDogFormData, photoFormData: PhotoFormData): 
   Promise<void> => {
     try {
       const newDog = await dogService.create(dogFormData)
@@ -147,7 +147,6 @@ function App(): JSX.Element {
       
     }
   }
-
 
   useEffect((): void  => {
     const fetchProfile = async (): Promise<void> => {

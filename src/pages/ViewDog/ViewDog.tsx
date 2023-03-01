@@ -1,4 +1,7 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
+
+import * as dogService from '../../services/dogService'
 
 import './ViewDog.css'
 
@@ -18,13 +21,31 @@ interface ViewDogProps {
 
 const ViewDog = (props: ViewDogProps): JSX.Element => {
   let { addToFutureDogs, profile } = props
-  
+  const { id } = useParams() as {id: string}
   const location = useLocation()
-  const dog = location.state.dog
-  const dogPic = dog.photo ? dog.photo : defaultPic
+  // const stateDog = location.state.dog
+  const [dog, setDog] = useState<Dog>()
   const idArray = profile?.futureDogs?.map((dog: Dog)=>dog.id)
-
   
+  useEffect((): void => {
+    const fetchDog = async (): Promise<void> => {
+      try {
+        const dogData: Dog = await dogService.getDog(parseInt(id))
+        
+        
+        setDog(dogData)
+        
+        
+      } catch (error) {
+        console.log(error)
+      } 
+    }
+    fetchDog()
+  }, [])
+
+  if (!dog) return <h2>Loading dog...</h2>
+  
+  const dogPic = dog.photo ? dog.photo : defaultPic
 
   const handleClick = (): void => {
     if (profile) addToFutureDogs({profileId: profile.id, dogId: dog.id })
