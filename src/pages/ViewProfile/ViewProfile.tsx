@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react" 
 import { useParams } from "react-router"
+import { Link } from "react-router-dom";
 
 import './ViewProfile.css'
 
@@ -54,7 +55,9 @@ const ViewProfile = (): JSX.Element => {
           <h2>Our Dog{profile.listedDogs.length > 1 ? `s` : ''}</h2>
           <section id='dogs-main'>
             {profile?.listedDogs.map((dog: Dog) => 
-              <DogCard key={dog.id} dog={dog} />
+            <Link key={dog.id} className='link' to={`/dog/${dog.id}`}>
+              <DogCard dog={dog}/>
+            </Link>
             )}
           </section>
 
